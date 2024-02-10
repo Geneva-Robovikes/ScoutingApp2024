@@ -50,8 +50,7 @@
             android:hint="Enter Team Name"
             android:inputType="text"
             android:textColor="@color/white"
-            android:textColorHint="@color/white">
-        </EditText>
+            android:textColorHint="@color/white"></EditText>
     </LinearLayout>
 
     <RelativeLayout
@@ -69,6 +68,60 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="32dp">
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/autocanleave"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Auto: Leaves Start"
+                    android:textColor="@color/white"
+                    android:textSize="32sp"></TextView>
+
+                <CheckBox
+                    android:id="@+id/autoleaveCheckbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/white" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/autospeaker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Auto: Can Shoot in Speaker"
+                    android:textColor="@color/white"
+                    android:textSize="32sp"></TextView>
+
+                <CheckBox
+                    android:id="@+id/autospeakerCheckbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/white" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/autoamp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Auto: Can Shoot in Amp"
+                    android:textColor="@color/white"
+                    android:textSize="32sp"></TextView>
+
+                <CheckBox
+                    android:id="@+id/autoampCheckbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/white" />
+            </TableRow>
 
             <TableRow>
 
@@ -141,28 +194,58 @@
                     android:layout_weight="1"
                     android:text="Score Trap"
                     android:textColor="@color/white"
-                    android:textSize="32sp">
-                </TextView>
+                    android:textSize="32sp"></TextView>
+
                 <CheckBox
                     android:id="@+id/scoreTrapCheckbox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/white" />
             </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/spotlight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Spotlight"
+                    android:textColor="@color/white"
+                    android:textSize="32sp"></TextView>
+
+                <CheckBox
+                    android:id="@+id/spotlightCheckbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/white" />
+            </TableRow>
         </TableLayout>
     </RelativeLayout>
+
     <Button
         android:id="@+id/generateQRCODE"
         android:layout_width="200dp"
         android:layout_height="100dp"
-        android:layout_marginStart="100dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="-150dp"
         android:text="Generate QR Code"
         android:textSize="32sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5">
-    </Button>
+        app:layout_constraintVertical_bias="0.5"></Button>
+
+    <ImageView
+        android:layout_width="300dp"
+        android:id="@+id/QRCODE"
+        android:layout_height="300dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="30dp"
+        android:background="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+    </ImageView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
