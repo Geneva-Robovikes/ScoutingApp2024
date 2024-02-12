@@ -1,5 +1,6 @@
 package com.robovikes.scoutingapp2024;
 
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.zxing.BarcodeFormat;
@@ -18,6 +20,16 @@ import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 public class MainActivity extends AppCompatActivity {
     //declaration statements
+
+    //information
+    //scoring type
+    //robot build
+    //input type
+    //accuracy per shot
+    //mechanical problems
+    //driveability
+    //change auto to integers
+    //accuracy
     String teamName;
     boolean auto_canLeaveStartingZone = false;
     boolean auto_canShootNoteintoSpeaker = false;
@@ -53,25 +65,45 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //on button press generate json code and show QR code as image
                 //this is a mess and im sorry
-                teamName = String.valueOf(TeamName.getText());
-                auto_canLeaveStartingZone = AutoLeave.isChecked();
-                auto_canShootNoteintoSpeaker = AutoSpeaker.isChecked();
-                auto_canShootintoAmp = AutoAmp.isChecked();
-                speakerScore = Integer.parseInt(String.valueOf(SpeakerScore.getText())); //this conversion is stupid and i don't understand it
-                ampScore = Integer.parseInt(String.valueOf(AmpScore.getText())); //why can't i just return a numbers only string as an int?
-                onStage = OnStage.isChecked();
-                scoreTrap = ScoreTrap.isChecked();
-                spotlight = Spotlight.isChecked();
-                //generate qr code
-                MultiFormatWriter mWriter = new MultiFormatWriter();
-                try {
-                    //BitMatrix class to encode entered text and set Width & Height
-                    BitMatrix mMatrix = mWriter.encode(teamName, BarcodeFormat.QR_CODE, 400,400);
-                    BarcodeEncoder mEncoder = new BarcodeEncoder();
-                    Bitmap mBitmap = mEncoder.createBitmap(mMatrix);//creating bitmap of code
-                    QRCode.setImageBitmap(mBitmap);//Setting generated QR code to imageView
+
+                if (String.valueOf(SpeakerScore.getText()).equals("") || String.valueOf(AmpScore.getText()).equals("") || String.valueOf(TeamName.getText()).equals("")){
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                    builder.setTitle("Error");
+                    builder.setMessage("QR Code can't be generated without data");
+                    builder.setCancelable(true);
+                    AlertDialog alertDialog = builder.create();
+                    alertDialog.show();
+                }
+                else{
+                    teamName = String.valueOf(TeamName.getText());
+                    auto_canLeaveStartingZone = AutoLeave.isChecked();
+                    auto_canShootNoteintoSpeaker = AutoSpeaker.isChecked();
+                    auto_canShootintoAmp = AutoAmp.isChecked();
+                    speakerScore = Integer.parseInt(String.valueOf(SpeakerScore.getText())); //this conversion is stupid and i don't understand it
+                    ampScore = Integer.parseInt(String.valueOf(AmpScore.getText())); //why can't i just return a numbers only string as an int?
+                    onStage = OnStage.isChecked();
+                    scoreTrap = ScoreTrap.isChecked();
+                    spotlight = Spotlight.isChecked();
+
+                    //generate qr code
+                    String csvFile = "Team Name," + teamName +
+                            "\nAuto: Can Leave Start," + auto_canLeaveStartingZone +
+                            "\nAuto: Can Shoot in Speaker," + auto_canShootNoteintoSpeaker +
+                            "\nSpeaker Score," + speakerScore +
+                            "\nAmp Score," + ampScore +
+                            "\nOn Stage," + onStage +
+                            "\nScore Trap," + scoreTrap +
+                            "\nSpotlight," + spotlight;
+                    MultiFormatWriter mWriter = new MultiFormatWriter();
+                    try {
+                        //BitMatrix class to encode entered text and set Width & Height
+                        BitMatrix mMatrix = mWriter.encode(csvFile, BarcodeFormat.QR_CODE, 500, 500);
+                        BarcodeEncoder mEncoder = new BarcodeEncoder();
+                        Bitmap mBitmap = mEncoder.createBitmap(mMatrix);//creating bitmap of code
+                        QRCode.setImageBitmap(mBitmap);//Setting generated QR code to imageView
                     } catch (WriterException e) {
                         e.printStackTrace();
+                    }
                 }
             }
         });
