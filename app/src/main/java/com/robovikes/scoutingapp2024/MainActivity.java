@@ -30,6 +30,16 @@ public class MainActivity extends AppCompatActivity {
     //driveability
     //change auto to integers
     //accuracy
+    //park
+    //auto speciality
+    //auto pathing to notes (which ones?) for 8 notes
+    //assign positions
+
+    //up and down arrows
+
+    //OVERALL
+    //Average points
+    //Standard deviation of points
     String teamName;
     boolean auto_canLeaveStartingZone = false;
     boolean auto_canShootNoteintoSpeaker = false;
