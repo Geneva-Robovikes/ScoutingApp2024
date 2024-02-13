@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
                     onStage = OnStage.isChecked();
                     scoreTrap = ScoreTrap.isChecked();
                     spotlight = Spotlight.isChecked();
-
+                    QRCode.setVisibility(View.VISIBLE);
                     //generate qr code
                     String csvFile = "Team Name," + teamName +
                             "\nAuto: Can Leave Start," + auto_canLeaveStartingZone +
@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
                     MultiFormatWriter mWriter = new MultiFormatWriter();
                     try {
                         //BitMatrix class to encode entered text and set Width & Height
-                        BitMatrix mMatrix = mWriter.encode(csvFile, BarcodeFormat.QR_CODE, 500, 500);
+                        BitMatrix mMatrix = mWriter.encode(csvFile, BarcodeFormat.QR_CODE, 300, 300);
                         BarcodeEncoder mEncoder = new BarcodeEncoder();
                         Bitmap mBitmap = mEncoder.createBitmap(mMatrix);//creating bitmap of code
                         QRCode.setImageBitmap(mBitmap);//Setting generated QR code to imageView
@@ -115,6 +115,12 @@ public class MainActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }
+            }
+        });
+        QRCode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                QRCode.setVisibility(View.INVISIBLE);
             }
         });
     }
