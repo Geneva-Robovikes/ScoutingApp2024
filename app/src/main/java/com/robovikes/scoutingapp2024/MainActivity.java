@@ -65,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
         //auto
         CheckBox AutoSpeaker = (CheckBox) findViewById(R.id.autospeakerCheckbox);
         CheckBox AutoAmp = (CheckBox) findViewById(R.id.autoampCheckbox);
-        CheckBox AutoLeave = (CheckBox) findViewById(R.id.autoleaveCheckbox);
         CheckBox Spotlight = (CheckBox) findViewById(R.id.spotlightCheckbox);
         //qr code
         ImageView QRCode = (ImageView) findViewById(R.id.QRCODE);
@@ -86,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else{
                     teamName = String.valueOf(TeamName.getText());
-                    auto_canLeaveStartingZone = AutoLeave.isChecked();
+                    //auto_canLeaveStartingZone = AutoLeave.isChecked();
                     auto_canShootNoteintoSpeaker = AutoSpeaker.isChecked();
                     auto_canShootintoAmp = AutoAmp.isChecked();
                     speakerScore = Integer.parseInt(String.valueOf(SpeakerScore.getText())); //this conversion is stupid and i don't understand it

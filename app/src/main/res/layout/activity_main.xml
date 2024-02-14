@@ -14,7 +14,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="@dimen/_35sdp"
             android:background="#431e5c"
             android:padding="16dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:text="Robovikes #3067 - Scouting App"
                 android:textColor="@color/white"
-                android:textSize="48sp" />
+                android:textSize="36sp" />
         </LinearLayout>
     </RelativeLayout>
 
@@ -54,8 +54,8 @@
     </LinearLayout>
 
     <RelativeLayout
-        android:layout_width="800dp"
-        android:layout_height="500dp"
+        android:layout_width="@dimen/_300sdp"
+        android:layout_height="@dimen/_200sdp"
         android:layout_marginEnd="128dp"
         android:layout_marginBottom="-72dp"
         android:background="#431e5c"
@@ -63,164 +63,186 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5">
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="1000dp">
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="32dp">
 
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="32dp">
+                <TableRow>
+                    <TextView
+                        android:id="@+id/autocanleave"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Auto: Leaves Start"
+                        android:textColor="@color/white"
+                        android:textSize="32sp">
+                    </TextView>
+                    <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:orientation="horizontal">
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@mipmap/minus_foreground">
+                        </Button>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:text="0"
+                            android:textColor="@color/white"
+                            android:textSize="32sp"
+                            android:padding="5dp">
+                        </TextView>
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@mipmap/plus_foreground"
+                            android:scaleX="0.3"
+                            android:scaleY="0.3">
+                        </Button>
+                    </LinearLayout>
+                </TableRow>
 
-            <TableRow>
+                <TableRow>
 
-                <TextView
-                    android:id="@+id/autocanleave"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Auto: Leaves Start"
-                    android:textColor="@color/white"
-                    android:textSize="32sp"></TextView>
+                    <TextView
+                        android:id="@+id/autospeaker"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Auto: Can Shoot in Speaker"
+                        android:textColor="@color/white"
+                        android:textSize="32sp"></TextView>
 
-                <CheckBox
-                    android:id="@+id/autoleaveCheckbox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/white" />
-            </TableRow>
+                    <CheckBox
+                        android:id="@+id/autospeakerCheckbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/white" />
+                </TableRow>
 
-            <TableRow>
+                <TableRow>
 
-                <TextView
-                    android:id="@+id/autospeaker"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Auto: Can Shoot in Speaker"
-                    android:textColor="@color/white"
-                    android:textSize="32sp"></TextView>
+                    <TextView
+                        android:id="@+id/autoamp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Auto: Can Shoot in Amp"
+                        android:textColor="@color/white"
+                        android:textSize="32sp"></TextView>
 
-                <CheckBox
-                    android:id="@+id/autospeakerCheckbox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/white" />
-            </TableRow>
+                    <CheckBox
+                        android:id="@+id/autoampCheckbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/white" />
+                </TableRow>
 
-            <TableRow>
+                <TableRow>
 
-                <TextView
-                    android:id="@+id/autoamp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Auto: Can Shoot in Amp"
-                    android:textColor="@color/white"
-                    android:textSize="32sp"></TextView>
+                    <TextView
+                        android:id="@+id/speakerScoreText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Speaker Score"
+                        android:textColor="@color/white"
+                        android:textSize="32sp"></TextView>
 
-                <CheckBox
-                    android:id="@+id/autoampCheckbox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/white" />
-            </TableRow>
+                    <EditText
+                        android:id="@+id/editSpeakerScore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:hint="Enter Speaker Score"
+                        android:inputType="number"
+                        android:textColorHint="@color/white"
+                        android:textSize="24sp"></EditText>
+                </TableRow>
 
-            <TableRow>
+                <TableRow>
 
-                <TextView
-                    android:id="@+id/speakerScoreText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Speaker Score"
-                    android:textColor="@color/white"
-                    android:textSize="32sp"></TextView>
+                    <TextView
+                        android:id="@+id/ampScore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Amp Score"
+                        android:textColor="@color/white"
+                        android:textSize="32sp"></TextView>
 
-                <EditText
-                    android:id="@+id/editSpeakerScore"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:hint="Enter Speaker Score"
-                    android:inputType="number"
-                    android:textColorHint="@color/white"
-                    android:textSize="24sp"></EditText>
-            </TableRow>
+                    <EditText
+                        android:id="@+id/editAmpScore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:hint="Enter Amp Score"
+                        android:inputType="number"
+                        android:textColorHint="@color/white"
+                        android:textSize="24sp"></EditText>
+                </TableRow>
 
-            <TableRow>
+                <TableRow>
 
-                <TextView
-                    android:id="@+id/ampScore"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Amp Score"
-                    android:textColor="@color/white"
-                    android:textSize="32sp"></TextView>
+                    <TextView
+                        android:id="@+id/onStage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="On Stage"
+                        android:textColor="@color/white"
+                        android:textSize="32sp"></TextView>
 
-                <EditText
-                    android:id="@+id/editAmpScore"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:hint="Enter Amp Score"
-                    android:inputType="number"
-                    android:textColorHint="@color/white"
-                    android:textSize="24sp"></EditText>
-            </TableRow>
+                    <CheckBox
+                        android:id="@+id/onStageCheckbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/white" />
+                </TableRow>
 
-            <TableRow>
+                <TableRow>
 
-                <TextView
-                    android:id="@+id/onStage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="On Stage"
-                    android:textColor="@color/white"
-                    android:textSize="32sp"></TextView>
+                    <TextView
+                        android:id="@+id/scoreTrapText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Score Trap"
+                        android:textColor="@color/white"
+                        android:textSize="32sp"></TextView>
 
-                <CheckBox
-                    android:id="@+id/onStageCheckbox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/white" />
-            </TableRow>
+                    <CheckBox
+                        android:id="@+id/scoreTrapCheckbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/white" />
+                </TableRow>
 
-            <TableRow>
+                <TableRow>
 
-                <TextView
-                    android:id="@+id/scoreTrapText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Score Trap"
-                    android:textColor="@color/white"
-                    android:textSize="32sp"></TextView>
+                    <TextView
+                        android:id="@+id/spotlight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Spotlight"
+                        android:textColor="@color/white"
+                        android:textSize="32sp"></TextView>
 
-                <CheckBox
-                    android:id="@+id/scoreTrapCheckbox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/white" />
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:id="@+id/spotlight"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Spotlight"
-                    android:textColor="@color/white"
-                    android:textSize="32sp"></TextView>
-
-                <CheckBox
-                    android:id="@+id/spotlightCheckbox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/white" />
-            </TableRow>
-        </TableLayout>
+                    <CheckBox
+                        android:id="@+id/spotlightCheckbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/white" />
+                </TableRow>
+            </TableLayout>
+        </ScrollView>
     </RelativeLayout>
 
     <Button
@@ -238,8 +260,8 @@
 
     <ImageView
         android:id="@+id/QRCODE"
-        android:layout_width="500dp"
-        android:layout_height="500dp"
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="@dimen/_200sdp"
         android:background="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
