@@ -59,54 +59,20 @@
         android:layout_marginEnd="128dp"
         android:layout_marginBottom="-72dp"
         android:background="#431e5c"
+        android:padding="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5">
+
         <ScrollView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="1000dp">
+
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="32dp">
-
-                <TableRow>
-                    <TextView
-                        android:id="@+id/autocanleave"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Auto: Leaves Start"
-                        android:textColor="@color/white"
-                        android:textSize="32sp">
-                    </TextView>
-                    <LinearLayout
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
-                        android:orientation="horizontal">
-                        <Button
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:drawableLeft="@mipmap/minus_foreground">
-                        </Button>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="25dp"
-                            android:text="0"
-                            android:textColor="@color/white"
-                            android:textSize="32sp"
-                            android:padding="5dp">
-                        </TextView>
-                        <Button
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:drawableLeft="@mipmap/plus_foreground"
-                            android:scaleX="0.3"
-                            android:scaleY="0.3">
-                        </Button>
-                    </LinearLayout>
-                </TableRow>
+                android:padding="2dp">
 
                 <TableRow>
 
@@ -115,35 +81,78 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Auto: Can Shoot in Speaker"
+                        android:text="Auto: Speaker Score"
                         android:textColor="@color/white"
                         android:textSize="32sp"></TextView>
 
-                    <CheckBox
-                        android:id="@+id/autospeakerCheckbox"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:buttonTint="@color/white" />
-                </TableRow>
+                        android:orientation="horizontal">
 
+                        <Button
+                            android:id="@+id/autospeakerMinus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="-"
+                            android:textSize="20dp"></Button>
+
+                        <TextView
+                            android:id="@+id/autospeakerValue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="10dp"
+                            android:text="0"
+                            android:textColor="@color/white"
+                            android:textSize="32sp"></TextView>
+
+                        <Button
+                            android:id="@+id/autospeakerPlus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="+"
+                            android:textSize="20dp"></Button>
+                    </LinearLayout>
+                </TableRow>
                 <TableRow>
 
                     <TextView
-                        android:id="@+id/autoamp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Auto: Can Shoot in Amp"
+                        android:text="Auto: Amp Score"
                         android:textColor="@color/white"
                         android:textSize="32sp"></TextView>
 
-                    <CheckBox
-                        android:id="@+id/autoampCheckbox"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:buttonTint="@color/white" />
-                </TableRow>
+                        android:orientation="horizontal">
 
+                        <Button
+                            android:id="@+id/autoampMinus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="-"
+                            android:textSize="20dp"></Button>
+
+                        <TextView
+                            android:id="@+id/autoamp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="10dp"
+                            android:text="0"
+                            android:textColor="@color/white"
+                            android:textSize="32sp"></TextView>
+
+                        <Button
+                            android:id="@+id/autoampPlus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="+"
+                            android:textSize="20dp"></Button>
+                    </LinearLayout>
+                </TableRow>
                 <TableRow>
 
                     <TextView
@@ -166,27 +175,6 @@
                         android:textSize="24sp"></EditText>
                 </TableRow>
 
-                <TableRow>
-
-                    <TextView
-                        android:id="@+id/ampScore"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Amp Score"
-                        android:textColor="@color/white"
-                        android:textSize="32sp"></TextView>
-
-                    <EditText
-                        android:id="@+id/editAmpScore"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:hint="Enter Amp Score"
-                        android:inputType="number"
-                        android:textColorHint="@color/white"
-                        android:textSize="24sp"></EditText>
-                </TableRow>
 
                 <TableRow>
 
@@ -256,7 +244,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5"></Button>
+        app:layout_constraintVertical_bias="0.5">
+    </Button>
 
     <ImageView
         android:id="@+id/QRCODE"

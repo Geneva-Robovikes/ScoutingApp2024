@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +18,11 @@ import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
+
+import org.w3c.dom.Text;
+
+import java.util.Dictionary;
+import java.util.Hashtable;
 
 public class MainActivity extends AppCompatActivity {
     //declaration statements
@@ -49,8 +55,8 @@ public class MainActivity extends AppCompatActivity {
     boolean onStage = false;
     boolean scoreTrap = false;
     boolean spotlight = false;
-
-
+    int autoSpeakerScore = 0;
+    int autoAmpScore = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,22 +65,57 @@ public class MainActivity extends AppCompatActivity {
         Button generateQRCode = (Button)findViewById(R.id.generateQRCODE);
         EditText TeamName = (EditText)findViewById(R.id.editTeamName);
         EditText SpeakerScore = (EditText) findViewById(R.id.editSpeakerScore);
-        EditText AmpScore = (EditText)findViewById(R.id.editAmpScore);
         CheckBox OnStage = (CheckBox)findViewById(R.id.onStageCheckbox);
         CheckBox ScoreTrap = (CheckBox)findViewById(R.id.scoreTrapCheckbox);
         //auto
-        CheckBox AutoSpeaker = (CheckBox) findViewById(R.id.autospeakerCheckbox);
-        CheckBox AutoAmp = (CheckBox) findViewById(R.id.autoampCheckbox);
+
+
         CheckBox Spotlight = (CheckBox) findViewById(R.id.spotlightCheckbox);
         //qr code
         ImageView QRCode = (ImageView) findViewById(R.id.QRCODE);
 
+        //Auto speaker score
+        TextView AutoSpeaker = (TextView) findViewById(R.id.autospeakerValue);
+        Button AutoSpeakerPlus = (Button) findViewById(R.id.autospeakerPlus);
+        Button AutoSpeakerMinus = (Button) findViewById(R.id.autospeakerMinus);
+        AutoSpeakerPlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                autoSpeakerScore += 1;
+                AutoSpeaker.setText(String.valueOf(autoSpeakerScore));
+            }
+        });
+        AutoSpeakerMinus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                autoSpeakerScore--;
+                AutoSpeaker.setText(String.valueOf(autoSpeakerScore));
+            }
+        });
+        //Auto Amp Score
+        TextView AutoAmp = (TextView) findViewById(R.id.autoamp);
+        Button AutoAmpPlus = (Button) findViewById(R.id.autoampPlus);
+        Button AutoAmpMinus = (Button) findViewById(R.id.autoampMinus);
+        AutoAmpPlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                autoAmpScore++;
+                AutoAmp.setText(String.valueOf(autoAmpScore));
+            }
+        });
+        AutoAmpMinus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                autoAmpScore--;
+                AutoAmp.setText(String.valueOf(autoAmpScore));
+            }
+        });
         generateQRCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //on button press generate json code and show QR code as image
                 //this is a mess and im sorry
-
+                /*
                 if (String.valueOf(SpeakerScore.getText()).equals("") || String.valueOf(AmpScore.getText()).equals("") || String.valueOf(TeamName.getText()).equals("")){
                     AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                     builder.setTitle("Error");
@@ -84,9 +125,11 @@ public class MainActivity extends AppCompatActivity {
                     alertDialog.show();
                 }
                 else{
+                    Dictionary<String, String> textMap = new Hashtable<>();
+
                     teamName = String.valueOf(TeamName.getText());
-                    //auto_canLeaveStartingZone = AutoLeave.isChecked();
-                    auto_canShootNoteintoSpeaker = AutoSpeaker.isChecked();
+                    textMap.put("Team Name,",teamName);
+
                     auto_canShootintoAmp = AutoAmp.isChecked();
                     speakerScore = Integer.parseInt(String.valueOf(SpeakerScore.getText())); //this conversion is stupid and i don't understand it
                     ampScore = Integer.parseInt(String.valueOf(AmpScore.getText())); //why can't i just return a numbers only string as an int?
@@ -114,6 +157,7 @@ public class MainActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }
+                 */
             }
         });
         QRCode.setOnClickListener(new View.OnClickListener() {
