@@ -115,7 +115,6 @@
                     </LinearLayout>
                 </TableRow>
                 <TableRow>
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -156,7 +155,7 @@
                 <TableRow>
 
                     <TextView
-                        android:id="@+id/speakerScoreText"
+                        android:id="@+id/speaker"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -164,15 +163,34 @@
                         android:textColor="@color/white"
                         android:textSize="32sp"></TextView>
 
-                    <EditText
-                        android:id="@+id/editSpeakerScore"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:hint="Enter Speaker Score"
-                        android:inputType="number"
-                        android:textColorHint="@color/white"
-                        android:textSize="24sp"></EditText>
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/speakerMinus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="-"
+                            android:textSize="20dp"></Button>
+
+                        <TextView
+                            android:id="@+id/speakerValue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="10dp"
+                            android:text="0"
+                            android:textColor="@color/white"
+                            android:textSize="32sp"></TextView>
+
+                        <Button
+                            android:id="@+id/speakerPlus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="+"
+                            android:textSize="20dp"></Button>
+                    </LinearLayout>
                 </TableRow>
 
 
