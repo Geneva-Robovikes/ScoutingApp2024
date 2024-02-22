@@ -17,6 +17,7 @@
             android:layout_height="@dimen/_35sdp"
             android:background="#431e5c"
             android:padding="16dp"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -28,6 +29,18 @@
                 android:text="Robovikes #3067 - Scouting App"
                 android:textColor="@color/white"
                 android:textSize="36sp" />
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+            </Space>
+            <ImageButton
+                android:id="@+id/mapButtonToMap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/map_foreground"
+                android:background="@null">
+            </ImageButton>
         </LinearLayout>
     </RelativeLayout>
 
@@ -155,6 +168,86 @@
                 <TableRow>
 
                     <TextView
+                        android:id="@+id/shotsAttempted"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Shots Attempted"
+                        android:textColor="@color/white"
+                        android:textSize="32sp"></TextView>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/shotsAttemptedMinus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="-"
+                            android:textSize="20dp"></Button>
+
+                        <TextView
+                            android:id="@+id/shotsAttemptedValue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="10dp"
+                            android:text="0"
+                            android:textColor="@color/white"
+                            android:textSize="32sp"></TextView>
+
+                        <Button
+                            android:id="@+id/shotsAttemptedPlus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="+"
+                            android:textSize="20dp"></Button>
+                    </LinearLayout>
+                </TableRow>
+                <TableRow>
+
+                    <TextView
+                        android:id="@+id/shotsMade"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Shots Made"
+                        android:textColor="@color/white"
+                        android:textSize="32sp"></TextView>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/shotsMadeMinus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="-"
+                            android:textSize="20dp"></Button>
+
+                        <TextView
+                            android:id="@+id/shotsMadeValue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="10dp"
+                            android:text="0"
+                            android:textColor="@color/white"
+                            android:textSize="32sp"></TextView>
+
+                        <Button
+                            android:id="@+id/shotsMadePlus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="+"
+                            android:textSize="20dp"></Button>
+                    </LinearLayout>
+                </TableRow>
+                <TableRow>
+
+                    <TextView
                         android:id="@+id/speaker"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -192,7 +285,46 @@
                             android:textSize="20dp"></Button>
                     </LinearLayout>
                 </TableRow>
+                <TableRow>
 
+                    <TextView
+                        android:id="@+id/amp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Amp Score"
+                        android:textColor="@color/white"
+                        android:textSize="32sp"></TextView>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/ampMinus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="-"
+                            android:textSize="20dp"></Button>
+
+                        <TextView
+                            android:id="@+id/ampValue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="10dp"
+                            android:text="0"
+                            android:textColor="@color/white"
+                            android:textSize="32sp"></TextView>
+
+                        <Button
+                            android:id="@+id/ampPlus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="+"
+                            android:textSize="20dp"></Button>
+                    </LinearLayout>
+                </TableRow>
 
                 <TableRow>
 
@@ -247,6 +379,7 @@
                         android:layout_height="wrap_content"
                         android:buttonTint="@color/white" />
                 </TableRow>
+
             </TableLayout>
         </ScrollView>
     </RelativeLayout>

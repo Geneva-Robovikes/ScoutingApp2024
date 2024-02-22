@@ -2,12 +2,16 @@ package com.robovikes.scoutingapp2024;
 
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
+import android.media.Image;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
@@ -33,11 +37,8 @@ public class MainActivity extends AppCompatActivity {
     //scoring type
     //robot build
     //input type
-    //accuracy per shot
     //mechanical problems
     //driveability
-    //change auto to integers
-    //accuracy
     //park
     //auto speciality
     //auto pathing to notes (which ones?) for 8 notes
@@ -49,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
     //Average points
     //Standard deviation of points
     String teamName;
+    String appView = "main";
+    int shotsAttempted = 0;
+    int shotsMade = 0;
     boolean auto_canLeaveStartingZone = false;
     boolean auto_canShootNoteintoSpeaker = false;
     boolean auto_canShootintoAmp = false;
@@ -62,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main);
         //declaring edit texts
         Button generateQRCode = (Button)findViewById(R.id.generateQRCODE);
         EditText TeamName = (EditText)findViewById(R.id.editTeamName);
@@ -130,6 +134,84 @@ public class MainActivity extends AppCompatActivity {
                 SpeakerScore.setText(String.valueOf(speakerScore));
             }
         });
+
+        //amp
+        TextView AmpScore = (TextView) findViewById(R.id.ampValue);
+        Button AmpMinus = (Button) findViewById(R.id.ampMinus);
+        Button AmpPlus = (Button) findViewById(R.id.ampPlus);
+
+        AmpPlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ampScore++;
+                AmpScore.setText(String.valueOf(ampScore));
+            }
+        });
+        AmpMinus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ampScore--;
+                AmpScore.setText(String.valueOf(ampScore));
+            }
+        });
+
+        //shots attempted
+        TextView ShotsAttempted = (TextView) findViewById(R.id.shotsAttemptedValue);
+        Button ShotsAttemptedPlus = (Button) findViewById(R.id.shotsAttemptedPlus);
+        Button ShotsAttemptedMinus = (Button) findViewById(R.id.shotsAttemptedMinus);
+
+        ShotsAttemptedMinus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                shotsAttempted--;
+                ShotsAttempted.setText(String.valueOf(shotsAttempted));
+            }
+        });
+        ShotsAttemptedPlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                shotsAttempted++;
+                ShotsAttempted.setText(String.valueOf(shotsAttempted));
+            }
+        });
+        //shots made
+
+        TextView ShotsMade = (TextView) findViewById(R.id.shotsMadeValue);
+        Button ShotsMadePlus = (Button) findViewById(R.id.shotsMadePlus);
+        Button ShotsMadeMinus = (Button) findViewById(R.id.shotsMadeMinus);
+
+        ShotsMadeMinus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                shotsMade--;
+                ShotsMade.setText(String.valueOf(shotsMade));
+            }
+        });
+        ShotsMadePlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                shotsMade++;
+                ShotsMade.setText(String.valueOf(shotsMade));
+            }
+        });
+        //map buttons
+        ImageButton MapButtonToMap = (ImageButton) findViewById(R.id.mapButtonToMap);
+        ImageButton MapButtonToMain = (ImageButton) findViewById(R.id.mapButtonToMain);
+
+        MapButtonToMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                findViewById(R.id.mainLayout).setVisibility(View.GONE);
+                findViewById(R.id.mapLayout).setVisibility(View.VISIBLE);
+            }
+        });
+        MapButtonToMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                findViewById(R.id.mainLayout).setVisibility(View.VISIBLE);
+                findViewById(R.id.mapLayout).setVisibility(View.GONE);
+            }
+        });
         generateQRCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -143,7 +225,9 @@ public class MainActivity extends AppCompatActivity {
                 textMap.add(new String[]{"Auto Speaker Score,", String.valueOf(autoSpeakerScore)});
                 textMap.add(new String[]{"Auto Amp Score,", String.valueOf(autoAmpScore)});
                 textMap.add(new String[]{"Speaker Score", String.valueOf(speakerScore)});
-                //speakerScore = Integer.parseInt(String.valueOf(SpeakerScore.getText())); //this conversion is stupid and i don't understand it
+                textMap.add(new String[]{"Amp Score:",String.valueOf(ampScore)});
+                textMap.add(new String[]{"Shots Attempted:",String.valueOf(shotsAttempted)});
+                textMap.add(new String[]{"Shots Made:",String.valueOf(shotsMade)});
                 onStage = OnStage.isChecked();
                 scoreTrap = ScoreTrap.isChecked();
                 spotlight = Spotlight.isChecked();
@@ -157,18 +241,6 @@ public class MainActivity extends AppCompatActivity {
                     csvFile += ",";
                 }
 
-
-                //generate qr code
-                /*
-                String csvFile = "Team Name," + teamName +
-                        "\nAuto: Can Leave Start," + auto_canLeaveStartingZone +
-                        "\nAuto: Can Shoot in Speaker," + auto_canShootNoteintoSpeaker +
-                        "\nSpeaker Score," + speakerScore +
-                        "\nAmp Score," + ampScore +
-                        "\nOn Stage," + onStage +
-                        "\nScore Trap," + scoreTrap +
-                        "\nSpotlight," + spotlight;
-                 */
                 MultiFormatWriter mWriter = new MultiFormatWriter();
                 try {
                     //BitMatrix class to encode entered text and set Width & Height
