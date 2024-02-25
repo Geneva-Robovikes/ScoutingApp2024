@@ -4,9 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#23132e"
     tools:context=".MainActivity">
     <!--Header-->
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:src="@drawable/gif_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        android:scaleY="1.1"
+        android:scaleX="1.1">
+    </pl.droidsonroids.gif.GifImageView>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/robovikes3067"
+        android:scaleX="0.3"
+        android:scaleY="0.3">
+    </ImageView>
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
@@ -15,9 +34,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/_35sdp"
-            android:background="#431e5c"
-            android:padding="16dp"
+            android:background="#B3431e5c"
             android:orientation="horizontal"
+            android:padding="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -29,18 +48,19 @@
                 android:text="Robovikes #3067 - Scouting App"
                 android:textColor="@color/white"
                 android:textSize="36sp" />
+
             <Space
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_weight="1">
             </Space>
+
             <ImageButton
                 android:id="@+id/mapButtonToMap"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/map_foreground"
-                android:background="@null">
-            </ImageButton>
+                android:background="@null"
+                android:src="@drawable/map_foreground"></ImageButton>
         </LinearLayout>
     </RelativeLayout>
 
@@ -63,326 +83,561 @@
             android:hint="Enter Team Name"
             android:inputType="text"
             android:textColor="@color/white"
-            android:textColorHint="@color/white"></EditText>
+            android:textColorHint="@color/white">
+
+        </EditText>
     </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="@dimen/_300sdp"
-        android:layout_height="@dimen/_200sdp"
+        android:layout_height="@dimen/_220sdp"
         android:layout_marginEnd="128dp"
         android:layout_marginBottom="-72dp"
-        android:background="#431e5c"
-        android:padding="32dp"
+        android:background="#B3431e5c"
+        android:orientation="vertical"
+        android:padding="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5">
-
-        <ScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="1000dp">
+            android:layout_height="80dp"
+            android:background="#B3431e5c"
+            android:paddingHorizontal="90dp"
+            android:gravity="center_vertical">
 
-            <TableLayout
+            <Button
+                android:id="@+id/buttonToPit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pit"
+                android:backgroundTint="#431e5c"
+                android:textColor="@color/white"
+                android:textSize="32sp">
+            </Button>
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+            </Space>
+            <Button
+                android:id="@+id/buttonToAuto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Auto"
+                android:backgroundTint="#CC003D"
+                android:textColor="@color/white"
+                android:textSize="32sp">
+            </Button>
+            <Space
+                android:layout_width="wrap_content"
+                android:backgroundTint="#595775"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+            </Space>
+            <Button
+                android:id="@+id/buttonToTeleop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Teleop"
+                android:backgroundTint="#7C9EB2"
+                android:textColor="@color/white"
+                android:textSize="32sp">
+            </Button>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ScrollView
+                android:id="@+id/pitData"
+                android:background="#99431e5c"
+                android:layout_width="match_parent"
+                android:layout_height="1000dp"
+                android:padding="16dp">
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/robotWidth"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="10dp"
+                            android:text="Robot Width (in)"
+                            android:textColor="@color/white"
+                            android:textSize="32sp">
+                        </TextView>
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1">
+                        </Space>
+                        <EditText
+                            android:id="@+id/robotWidthValue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="Robot Width"
+                            android:gravity="center"
+                            android:inputType="numberDecimal"
+                            android:textSize="32sp"
+                            android:textColor="@color/white"
+                            android:textColorHint="@color/white">
+                        </EditText>
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/robotHeight"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="10dp"
+                            android:text="Robot Height (in)"
+                            android:textColor="@color/white"
+                            android:textSize="32sp">
+                        </TextView>
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1">
+                        </Space>
+                        <EditText
+                            android:id="@+id/robotHeightValue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="Robot Height"
+                            android:gravity="center"
+                            android:inputType="numberDecimal"
+                            android:textSize="32sp"
+                            android:textColor="@color/white"
+                            android:textColorHint="@color/white">
+                        </EditText>
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/robotLength"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="10dp"
+                            android:text="Robot Length (in)"
+                            android:textColor="@color/white"
+                            android:textSize="32sp">
+                        </TextView>
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1">
+                        </Space>
+                        <EditText
+                            android:id="@+id/robotLengthValue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="Robot Length"
+                            android:gravity="center"
+                            android:inputType="numberDecimal"
+                            android:textSize="32sp"
+                            android:textColor="@color/white"
+                            android:textColorHint="@color/white">
+                        </EditText>
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/robotWeight"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="10dp"
+                            android:text="Robot Weight (lbs)"
+                            android:textColor="@color/white"
+                            android:textSize="32sp">
+                        </TextView>
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1">
+                        </Space>
+                        <EditText
+                            android:id="@+id/robotWeightValue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="Robot Weight"
+                            android:gravity="center"
+                            android:inputType="numberDecimal"
+                            android:textSize="32sp"
+                            android:textColor="@color/white"
+                            android:textColorHint="@color/white">
+                        </EditText>
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/cycleTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="10dp"
+                            android:text="Cycle Time (sec)"
+                            android:textColor="@color/white"
+                            android:textSize="32sp">
+                        </TextView>
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1">
+                        </Space>
+                        <EditText
+                            android:id="@+id/cycleTimeValue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="Cycle Time"
+                            android:gravity="center"
+                            android:inputType="numberDecimal"
+                            android:textSize="32sp"
+                            android:textColor="@color/white"
+                            android:textColorHint="@color/white">
+                        </EditText>
+                    </TableRow>
+                </TableLayout>
+
+            </ScrollView>
+            <ScrollView
+                android:id="@+id/autoData"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="2dp">
-
-                <TableRow>
-
-                    <TextView
-                        android:id="@+id/autospeaker"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Auto: Speaker Score"
-                        android:textColor="@color/white"
-                        android:textSize="32sp"></TextView>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <Button
-                            android:id="@+id/autospeakerMinus"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="-"
-                            android:textSize="20dp"></Button>
-
+                android:background="#B3CC003D"
+                android:padding="16dp">
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TableRow>
                         <TextView
-                            android:id="@+id/autospeakerValue"
+                            android:id="@+id/autospeaker"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="10dp"
-                            android:text="0"
+                            android:layout_weight="1"
+                            android:text="Auto: Notes in Speaker Scored"
                             android:textColor="@color/white"
                             android:textSize="32sp"></TextView>
 
-                        <Button
-                            android:id="@+id/autospeakerPlus"
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="+"
-                            android:textSize="20dp"></Button>
-                    </LinearLayout>
-                </TableRow>
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Auto: Amp Score"
-                        android:textColor="@color/white"
-                        android:textSize="32sp"></TextView>
+                            android:orientation="horizontal">
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                            <Button
+                                android:id="@+id/autospeakerMinus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="-"
+                                android:textSize="20dp"></Button>
 
-                        <Button
-                            android:id="@+id/autoampMinus"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="-"
-                            android:textSize="20dp"></Button>
+                            <TextView
+                                android:id="@+id/autospeakerValue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="10dp"
+                                android:text="0"
+                                android:textColor="@color/white"
+                                android:textSize="32sp"></TextView>
+
+                            <Button
+                                android:id="@+id/autospeakerPlus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="+"
+                                android:textSize="20dp"></Button>
+                        </LinearLayout>
+                    </TableRow>
+
+                    <TableRow>
 
                         <TextView
-                            android:id="@+id/autoamp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="10dp"
-                            android:text="0"
+                            android:layout_weight="1"
+                            android:text="Auto: Notes in Amp Scored"
                             android:textColor="@color/white"
                             android:textSize="32sp"></TextView>
 
-                        <Button
-                            android:id="@+id/autoampPlus"
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="+"
-                            android:textSize="20dp"></Button>
-                    </LinearLayout>
-                </TableRow>
-                <TableRow>
+                            android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/shotsAttempted"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Shots Attempted"
-                        android:textColor="@color/white"
-                        android:textSize="32sp"></TextView>
+                            <Button
+                                android:id="@+id/autoampMinus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="-"
+                                android:textSize="20dp"></Button>
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                            <TextView
+                                android:id="@+id/autoamp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="10dp"
+                                android:text="0"
+                                android:textColor="@color/white"
+                                android:textSize="32sp"></TextView>
 
-                        <Button
-                            android:id="@+id/shotsAttemptedMinus"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="-"
-                            android:textSize="20dp"></Button>
-
+                            <Button
+                                android:id="@+id/autoampPlus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="+"
+                                android:textSize="20dp"></Button>
+                        </LinearLayout>
+                    </TableRow>
+                    <TableRow>
                         <TextView
-                            android:id="@+id/shotsAttemptedValue"
+                            android:id="@+id/autoLeaveStart"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="10dp"
-                            android:text="0"
                             android:textColor="@color/white"
-                            android:textSize="32sp"></TextView>
+                            android:textSize="32sp">
+                        </TextView>
+                    </TableRow>
+                </TableLayout>
+            </ScrollView>
+            <ScrollView
+                android:id="@+id/teleopData"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#B37C9EB2"
+                android:padding="16dp">
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="2dp">
 
-                        <Button
-                            android:id="@+id/shotsAttemptedPlus"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="+"
-                            android:textSize="20dp"></Button>
-                    </LinearLayout>
-                </TableRow>
-                <TableRow>
 
-                    <TextView
-                        android:id="@+id/shotsMade"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Shots Made"
-                        android:textColor="@color/white"
-                        android:textSize="32sp"></TextView>
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        <TableRow>
 
-                        <Button
-                            android:id="@+id/shotsMadeMinus"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="-"
-                            android:textSize="20dp"></Button>
+                            <TextView
+                                android:id="@+id/shotsAttempted"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Shots Attempted"
+                                android:textColor="@color/white"
+                                android:textSize="32sp"></TextView>
 
-                        <TextView
-                            android:id="@+id/shotsMadeValue"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="10dp"
-                            android:text="0"
-                            android:textColor="@color/white"
-                            android:textSize="32sp"></TextView>
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
 
-                        <Button
-                            android:id="@+id/shotsMadePlus"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="+"
-                            android:textSize="20dp"></Button>
-                    </LinearLayout>
-                </TableRow>
-                <TableRow>
+                                <Button
+                                    android:id="@+id/shotsAttemptedMinus"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="-"
+                                    android:textSize="20dp"></Button>
 
-                    <TextView
-                        android:id="@+id/speaker"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Speaker Score"
-                        android:textColor="@color/white"
-                        android:textSize="32sp"></TextView>
+                                <TextView
+                                    android:id="@+id/shotsAttemptedValue"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginHorizontal="10dp"
+                                    android:text="0"
+                                    android:textColor="@color/white"
+                                    android:textSize="32sp"></TextView>
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                                <Button
+                                    android:id="@+id/shotsAttemptedPlus"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="+"
+                                    android:textSize="20dp"></Button>
+                            </LinearLayout>
+                        </TableRow>
 
-                        <Button
-                            android:id="@+id/speakerMinus"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="-"
-                            android:textSize="20dp"></Button>
+                        <TableRow>
 
-                        <TextView
-                            android:id="@+id/speakerValue"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="10dp"
-                            android:text="0"
-                            android:textColor="@color/white"
-                            android:textSize="32sp"></TextView>
+                            <TextView
+                                android:id="@+id/shotsMade"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Shots Made"
+                                android:textColor="@color/white"
+                                android:textSize="32sp"></TextView>
 
-                        <Button
-                            android:id="@+id/speakerPlus"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="+"
-                            android:textSize="20dp"></Button>
-                    </LinearLayout>
-                </TableRow>
-                <TableRow>
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/amp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Amp Score"
-                        android:textColor="@color/white"
-                        android:textSize="32sp"></TextView>
+                                <Button
+                                    android:id="@+id/shotsMadeMinus"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="-"
+                                    android:textSize="20dp"></Button>
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                                <TextView
+                                    android:id="@+id/shotsMadeValue"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginHorizontal="10dp"
+                                    android:text="0"
+                                    android:textColor="@color/white"
+                                    android:textSize="32sp"></TextView>
 
-                        <Button
-                            android:id="@+id/ampMinus"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="-"
-                            android:textSize="20dp"></Button>
+                                <Button
+                                    android:id="@+id/shotsMadePlus"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="+"
+                                    android:textSize="20dp"></Button>
+                            </LinearLayout>
+                        </TableRow>
 
-                        <TextView
-                            android:id="@+id/ampValue"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="10dp"
-                            android:text="0"
-                            android:textColor="@color/white"
-                            android:textSize="32sp"></TextView>
+                        <TableRow>
 
-                        <Button
-                            android:id="@+id/ampPlus"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="+"
-                            android:textSize="20dp"></Button>
-                    </LinearLayout>
-                </TableRow>
+                            <TextView
+                                android:id="@+id/speaker"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Notes in Speaker Scored"
+                                android:textColor="@color/white"
+                                android:textSize="32sp"></TextView>
 
-                <TableRow>
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/onStage"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="On Stage"
-                        android:textColor="@color/white"
-                        android:textSize="32sp"></TextView>
+                                <Button
+                                    android:id="@+id/speakerMinus"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="-"
+                                    android:textSize="20dp"></Button>
 
-                    <CheckBox
-                        android:id="@+id/onStageCheckbox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:buttonTint="@color/white" />
-                </TableRow>
+                                <TextView
+                                    android:id="@+id/speakerValue"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginHorizontal="10dp"
+                                    android:text="0"
+                                    android:textColor="@color/white"
+                                    android:textSize="32sp"></TextView>
 
-                <TableRow>
+                                <Button
+                                    android:id="@+id/speakerPlus"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="+"
+                                    android:textSize="20dp"></Button>
+                            </LinearLayout>
+                        </TableRow>
 
-                    <TextView
-                        android:id="@+id/scoreTrapText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Score Trap"
-                        android:textColor="@color/white"
-                        android:textSize="32sp"></TextView>
+                        <TableRow>
 
-                    <CheckBox
-                        android:id="@+id/scoreTrapCheckbox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:buttonTint="@color/white" />
-                </TableRow>
+                            <TextView
+                                android:id="@+id/amp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Notes in Amp Scored"
+                                android:textColor="@color/white"
+                                android:textSize="32sp"></TextView>
 
-                <TableRow>
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/spotlight"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Spotlight"
-                        android:textColor="@color/white"
-                        android:textSize="32sp"></TextView>
+                                <Button
+                                    android:id="@+id/ampMinus"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="-"
+                                    android:textSize="20dp"></Button>
 
-                    <CheckBox
-                        android:id="@+id/spotlightCheckbox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:buttonTint="@color/white" />
-                </TableRow>
+                                <TextView
+                                    android:id="@+id/ampValue"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginHorizontal="10dp"
+                                    android:text="0"
+                                    android:textColor="@color/white"
+                                    android:textSize="32sp"></TextView>
 
-            </TableLayout>
-        </ScrollView>
-    </RelativeLayout>
+                                <Button
+                                    android:id="@+id/ampPlus"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="+"
+                                    android:textSize="20dp"></Button>
+                            </LinearLayout>
+                        </TableRow>
+
+                        <TableRow>
+
+                            <TextView
+                                android:id="@+id/onStage"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="On Stage"
+                                android:textColor="@color/white"
+                                android:textSize="32sp"></TextView>
+
+                            <CheckBox
+                                android:id="@+id/onStageCheckbox"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:buttonTint="@color/white" />
+                        </TableRow>
+
+                        <TableRow>
+
+                            <TextView
+                                android:id="@+id/scoreTrapText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Score Trap"
+                                android:textColor="@color/white"
+                                android:textSize="32sp"></TextView>
+
+                            <CheckBox
+                                android:id="@+id/scoreTrapCheckbox"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:buttonTint="@color/white" />
+                        </TableRow>
+
+                        <TableRow>
+
+                            <TextView
+                                android:id="@+id/spotlight"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Spotlight"
+                                android:textColor="@color/white"
+                                android:textSize="32sp"></TextView>
+
+                            <CheckBox
+                                android:id="@+id/spotlightCheckbox"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:buttonTint="@color/white" />
+                        </TableRow>
+                    </TableLayout>
+
+                </TableLayout>
+            </ScrollView>
+        </RelativeLayout>
+    </LinearLayout>
 
     <Button
         android:id="@+id/generateQRCODE"
@@ -395,22 +650,20 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5">
-    </Button>
+        app:layout_constraintVertical_bias="0.5"></Button>
 
     <ImageView
         android:id="@+id/QRCODE"
         android:layout_width="@dimen/_200sdp"
         android:layout_height="@dimen/_200sdp"
         android:background="@color/black"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5"
-        android:visibility="invisible">
-    </ImageView>
+        app:layout_constraintVertical_bias="0.5"></ImageView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
