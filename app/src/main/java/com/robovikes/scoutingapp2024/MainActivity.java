@@ -221,13 +221,12 @@ public class MainActivity extends AppCompatActivity {
                 String csvFile = "";
 
                 teamName = String.valueOf(TeamName.getText());
-                textMap.add(new String[]{"Team Name,", teamName});
-                textMap.add(new String[]{"Auto Speaker Score,", String.valueOf(autoSpeakerScore)});
-                textMap.add(new String[]{"Auto Amp Score,", String.valueOf(autoAmpScore)});
-                textMap.add(new String[]{"Speaker Score", String.valueOf(speakerScore)});
-                textMap.add(new String[]{"Amp Score:",String.valueOf(ampScore)});
-                textMap.add(new String[]{"Shots Attempted:",String.valueOf(shotsAttempted)});
-                textMap.add(new String[]{"Shots Made:",String.valueOf(shotsMade)});
+                for (AdditionButton thingy : ploos){
+                    textMap.add(new String[]{String.valueOf(thingy.name)+",",String.valueOf(thingy.value)});
+                }
+                for (NoteData noot : noteArray){
+                    textMap.add(new String[]{String.valueOf(noot.name)+",",String.valueOf(noot.state)});
+                }
                 onStage = OnStage.isChecked();
                 scoreTrap = ScoreTrap.isChecked();
                 spotlight = Spotlight.isChecked();
