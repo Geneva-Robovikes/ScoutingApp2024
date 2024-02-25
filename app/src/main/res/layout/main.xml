@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
     <include
         layout="@layout/activity_main"
-        android:id="@+id/mainLayout">
+        android:id="@+id/dataLayout">
     </include>
     <include
         layout="@layout/map"

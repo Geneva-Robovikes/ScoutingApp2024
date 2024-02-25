@@ -2,23 +2,25 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dataLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#23132e"
     tools:context=".MainActivity">
     <!--Header-->
     <pl.droidsonroids.gif.GifImageView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:scaleX="1.1"
+        android:scaleY="1.1"
         android:src="@drawable/gif_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5"
-        android:scaleY="1.1"
-        android:scaleX="1.1">
-    </pl.droidsonroids.gif.GifImageView>
+        app:layout_constraintVertical_bias="0.5"></pl.droidsonroids.gif.GifImageView>
+
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
@@ -27,7 +29,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/_35sdp"
-            android:background="#B3431e5c"
+            android:background="#431e5c"
             android:orientation="horizontal"
             android:padding="16dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -36,17 +38,17 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
+                android:id="@+id/TESTINGTITLE"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Robovikes #3067 - Scouting App"
                 android:textColor="@color/white"
-                android:textSize="36sp" />
+                android:textSize="36dp" />
 
             <Space
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_weight="1">
-            </Space>
+                android:layout_weight="1"></Space>
 
             <ImageButton
                 android:id="@+id/mapButtonToMap"
@@ -76,560 +78,508 @@
             android:hint="Enter Team Name"
             android:inputType="text"
             android:textColor="@color/white"
-            android:textColorHint="@color/white">
-
-        </EditText>
+            android:textColorHint="@color/white"></EditText>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="@dimen/_300sdp"
-        android:layout_height="@dimen/_220sdp"
+        android:layout_height="@dimen/_200sdp"
         android:layout_marginEnd="128dp"
         android:layout_marginBottom="-72dp"
-        android:background="#B3431e5c"
+        android:background="#CC431e5c"
         android:orientation="vertical"
-        android:padding="25dp"
+        android:padding="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:background="#B3431e5c"
-            android:paddingHorizontal="90dp"
-            android:gravity="center_vertical">
+            android:layout_height="60dp"
+            android:background="#431e5c"
+            android:orientation="horizontal"
+            android:paddingHorizontal="64dp">
 
             <Button
-                android:id="@+id/buttonToPit"
+                android:id="@+id/toPitButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#F5F0F6"
                 android:text="Pit"
-                android:backgroundTint="#431e5c"
                 android:textColor="@color/white"
-                android:textSize="32sp">
-            </Button>
+                android:textSize="32sp"></Button>
+
             <Space
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
-            </Space>
+                android:layout_weight="1"></Space>
+
             <Button
-                android:id="@+id/buttonToAuto"
+                android:id="@+id/toAutoButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#99810E44"
                 android:text="Auto"
-                android:backgroundTint="#CC003D"
                 android:textColor="@color/white"
-                android:textSize="32sp">
-            </Button>
+                android:textSize="32sp"></Button>
+
             <Space
                 android:layout_width="wrap_content"
-                android:backgroundTint="#595775"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
-            </Space>
+                android:layout_weight="1"></Space>
+
             <Button
-                android:id="@+id/buttonToTeleop"
+                android:id="@+id/toTeleopButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#2B2D42"
                 android:text="Teleop"
-                android:backgroundTint="#7C9EB2"
                 android:textColor="@color/white"
-                android:textSize="32sp">
-            </Button>
+                android:textSize="32sp"></Button>
         </LinearLayout>
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+        <ScrollView
+            android:id="@+id/pitData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#33F5F0F6"
+            android:padding="32dp">
 
-            <ScrollView
-                android:id="@+id/pitData"
-                android:background="#99431e5c"
-                android:layout_width="match_parent"
-                android:layout_height="1000dp"
-                android:padding="16dp">
-                <TableLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <TableRow>
-                        <TextView
-                            android:id="@+id/robotWidth"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="10dp"
-                            android:text="Robot Width (in)"
-                            android:textColor="@color/white"
-                            android:textSize="32sp">
-                        </TextView>
-                        <Space
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_weight="1">
-                        </Space>
-                        <EditText
-                            android:id="@+id/robotWidthValue"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:hint="Robot Width"
-                            android:gravity="center"
-                            android:inputType="numberDecimal"
-                            android:textSize="32sp"
-                            android:textColor="@color/white"
-                            android:textColorHint="@color/white">
-                        </EditText>
-                    </TableRow>
-                    <TableRow>
-                        <TextView
-                            android:id="@+id/robotHeight"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="10dp"
-                            android:text="Robot Height (in)"
-                            android:textColor="@color/white"
-                            android:textSize="32sp">
-                        </TextView>
-                        <Space
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_weight="1">
-                        </Space>
-                        <EditText
-                            android:id="@+id/robotHeightValue"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:hint="Robot Height"
-                            android:gravity="center"
-                            android:inputType="numberDecimal"
-                            android:textSize="32sp"
-                            android:textColor="@color/white"
-                            android:textColorHint="@color/white">
-                        </EditText>
-                    </TableRow>
-                    <TableRow>
-                        <TextView
-                            android:id="@+id/robotLength"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="10dp"
-                            android:text="Robot Length (in)"
-                            android:textColor="@color/white"
-                            android:textSize="32sp">
-                        </TextView>
-                        <Space
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_weight="1">
-                        </Space>
-                        <EditText
-                            android:id="@+id/robotLengthValue"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:hint="Robot Length"
-                            android:gravity="center"
-                            android:inputType="numberDecimal"
-                            android:textSize="32sp"
-                            android:textColor="@color/white"
-                            android:textColorHint="@color/white">
-                        </EditText>
-                    </TableRow>
-                    <TableRow>
-                        <TextView
-                            android:id="@+id/robotWeight"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="10dp"
-                            android:text="Robot Weight (lbs)"
-                            android:textColor="@color/white"
-                            android:textSize="32sp">
-                        </TextView>
-                        <Space
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_weight="1">
-                        </Space>
-                        <EditText
-                            android:id="@+id/robotWeightValue"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:hint="Robot Weight"
-                            android:gravity="center"
-                            android:inputType="numberDecimal"
-                            android:textSize="32sp"
-                            android:textColor="@color/white"
-                            android:textColorHint="@color/white">
-                        </EditText>
-                    </TableRow>
-                    <TableRow>
-                        <TextView
-                            android:id="@+id/cycleTime"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="10dp"
-                            android:text="Cycle Time (sec)"
-                            android:textColor="@color/white"
-                            android:textSize="32sp">
-                        </TextView>
-                        <Space
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_weight="1">
-                        </Space>
-                        <EditText
-                            android:id="@+id/cycleTimeValue"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:hint="Cycle Time"
-                            android:gravity="center"
-                            android:inputType="numberDecimal"
-                            android:textSize="32sp"
-                            android:textColor="@color/white"
-                            android:textColorHint="@color/white">
-                        </EditText>
-                    </TableRow>
-                </TableLayout>
+            <TableLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-            </ScrollView>
-            <ScrollView
-                android:id="@+id/autoData"
-                android:visibility="gone"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#B3CC003D"
-                android:padding="16dp">
-                <TableLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <TableRow>
-                        <TextView
-                            android:id="@+id/autospeaker"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Auto: Notes in Speaker Scored"
-                            android:textColor="@color/white"
-                            android:textSize="32sp"></TextView>
+                <TableRow>
 
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Robot Height (in)"
+                        android:textColor="@color/white"
+                        android:textSize="32sp"></TextView>
 
-                            <Button
-                                android:id="@+id/autospeakerMinus"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="-"
-                                android:textSize="20dp"></Button>
-
-                            <TextView
-                                android:id="@+id/autospeakerValue"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginHorizontal="10dp"
-                                android:text="0"
-                                android:textColor="@color/white"
-                                android:textSize="32sp"></TextView>
-
-                            <Button
-                                android:id="@+id/autospeakerPlus"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="+"
-                                android:textSize="20dp"></Button>
-                        </LinearLayout>
-                    </TableRow>
-
-                    <TableRow>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Auto: Notes in Amp Scored"
-                            android:textColor="@color/white"
-                            android:textSize="32sp"></TextView>
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <Button
-                                android:id="@+id/autoampMinus"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="-"
-                                android:textSize="20dp"></Button>
-
-                            <TextView
-                                android:id="@+id/autoamp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginHorizontal="10dp"
-                                android:text="0"
-                                android:textColor="@color/white"
-                                android:textSize="32sp"></TextView>
-
-                            <Button
-                                android:id="@+id/autoampPlus"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="+"
-                                android:textSize="20dp"></Button>
-                        </LinearLayout>
-                    </TableRow>
-                    <TableRow>
-                        <TextView
-                            android:id="@+id/autoLeaveStart"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/white"
-                            android:textSize="32sp">
-                        </TextView>
-                    </TableRow>
-                </TableLayout>
-            </ScrollView>
-            <ScrollView
-                android:id="@+id/teleopData"
-                android:visibility="gone"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#B37C9EB2"
-                android:padding="16dp">
-                <TableLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <TableLayout
-                        android:layout_width="match_parent"
+                    <Space
+                        android:layout_width="300dp"
                         android:layout_height="match_parent"
-                        android:padding="2dp">
+                        android:layout_weight="1"></Space>
 
+                    <EditText
+                        android:id="@+id/robotHeight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter"
+                        android:inputType="numberDecimal"
+                        android:textAlignment="center"
+                        android:textColorHint="@color/white"
+                        android:textSize="20sp"></EditText>
+                </TableRow>
 
+                <TableRow>
 
-                        <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Robot Width w/o Bumper (in)"
+                        android:textColor="@color/white"
+                        android:textSize="32sp"></TextView>
 
-                            <TextView
-                                android:id="@+id/shotsAttempted"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Shots Attempted"
-                                android:textColor="@color/white"
-                                android:textSize="32sp"></TextView>
+                    <Space
+                        android:layout_width="300dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"></Space>
 
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
+                    <EditText
+                        android:id="@+id/robotWidth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter"
+                        android:inputType="numberDecimal"
+                        android:textAlignment="center"
+                        android:textColorHint="@color/white"
+                        android:textSize="20sp"></EditText>
+                </TableRow>
 
-                                <Button
-                                    android:id="@+id/shotsAttemptedMinus"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="-"
-                                    android:textSize="20dp"></Button>
+                <TableRow>
 
-                                <TextView
-                                    android:id="@+id/shotsAttemptedValue"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginHorizontal="10dp"
-                                    android:text="0"
-                                    android:textColor="@color/white"
-                                    android:textSize="32sp"></TextView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Robot Width w/ Bumper (in)"
+                        android:textColor="@color/white"
+                        android:textSize="32sp"></TextView>
 
-                                <Button
-                                    android:id="@+id/shotsAttemptedPlus"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="+"
-                                    android:textSize="20dp"></Button>
-                            </LinearLayout>
-                        </TableRow>
+                    <Space
+                        android:layout_width="300dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"></Space>
 
-                        <TableRow>
+                    <EditText
+                        android:id="@+id/robotWidthBumper"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter"
+                        android:inputType="numberDecimal"
+                        android:textAlignment="center"
+                        android:textColorHint="@color/white"
+                        android:textSize="20sp"></EditText>
+                </TableRow>
 
-                            <TextView
-                                android:id="@+id/shotsMade"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Shots Made"
-                                android:textColor="@color/white"
-                                android:textSize="32sp"></TextView>
+                <TableRow>
 
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Robot Length w/o Bumper (in)"
+                        android:textColor="@color/white"
+                        android:textSize="32sp"></TextView>
 
-                                <Button
-                                    android:id="@+id/shotsMadeMinus"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="-"
-                                    android:textSize="20dp"></Button>
+                    <Space
+                        android:layout_width="300dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"></Space>
 
-                                <TextView
-                                    android:id="@+id/shotsMadeValue"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginHorizontal="10dp"
-                                    android:text="0"
-                                    android:textColor="@color/white"
-                                    android:textSize="32sp"></TextView>
+                    <EditText
+                        android:id="@+id/robotLength"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter"
+                        android:inputType="numberDecimal"
+                        android:textAlignment="center"
+                        android:textColorHint="@color/white"
+                        android:textSize="20sp"></EditText>
+                </TableRow>
 
-                                <Button
-                                    android:id="@+id/shotsMadePlus"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="+"
-                                    android:textSize="20dp"></Button>
-                            </LinearLayout>
-                        </TableRow>
+                <TableRow>
 
-                        <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Robot Length w/ Bumper (in)"
+                        android:textColor="@color/white"
+                        android:textSize="32sp"></TextView>
 
-                            <TextView
-                                android:id="@+id/speaker"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Notes in Speaker Scored"
-                                android:textColor="@color/white"
-                                android:textSize="32sp"></TextView>
+                    <Space
+                        android:layout_width="300dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"></Space>
 
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
+                    <EditText
+                        android:id="@+id/robotLengthBumper"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter"
+                        android:inputType="numberDecimal"
+                        android:textAlignment="center"
+                        android:textColorHint="@color/white"
+                        android:textSize="20sp"></EditText>
+                </TableRow>
 
-                                <Button
-                                    android:id="@+id/speakerMinus"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="-"
-                                    android:textSize="20dp"></Button>
+                <TableRow>
 
-                                <TextView
-                                    android:id="@+id/speakerValue"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginHorizontal="10dp"
-                                    android:text="0"
-                                    android:textColor="@color/white"
-                                    android:textSize="32sp"></TextView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cycle Time (s)"
+                        android:textColor="@color/white"
+                        android:textSize="32sp"></TextView>
 
-                                <Button
-                                    android:id="@+id/speakerPlus"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="+"
-                                    android:textSize="20dp"></Button>
-                            </LinearLayout>
-                        </TableRow>
+                    <Space
+                        android:layout_width="300dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"></Space>
 
-                        <TableRow>
+                    <EditText
+                        android:id="@+id/cycleTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter"
+                        android:inputType="numberDecimal"
+                        android:textAlignment="center"
+                        android:textColorHint="@color/white"
+                        android:textSize="20sp"></EditText>
+                </TableRow>
 
-                            <TextView
-                                android:id="@+id/amp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Notes in Amp Scored"
-                                android:textColor="@color/white"
-                                android:textSize="32sp"></TextView>
+                <TableRow>
 
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Drive Type"
+                        android:textColor="@color/white"
+                        android:textSize="32sp"></TextView>
 
-                                <Button
-                                    android:id="@+id/ampMinus"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="-"
-                                    android:textSize="20dp"></Button>
+                    <Space
+                        android:layout_width="300dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"></Space>
 
-                                <TextView
-                                    android:id="@+id/ampValue"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginHorizontal="10dp"
-                                    android:text="0"
-                                    android:textColor="@color/white"
-                                    android:textSize="32sp"></TextView>
+                    <EditText
+                        android:id="@+id/driveType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter"
+                        android:inputType="text"
+                        android:textAlignment="center"
+                        android:textColorHint="@color/white"
+                        android:textSize="20sp"></EditText>
+                </TableRow>
 
-                                <Button
-                                    android:id="@+id/ampPlus"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="+"
-                                    android:textSize="20dp"></Button>
-                            </LinearLayout>
-                        </TableRow>
+                <TableRow>
 
-                        <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Can hang on chain"
+                        android:textColor="@color/white"
+                        android:textSize="32sp"></TextView>
 
-                            <TextView
-                                android:id="@+id/onStage"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="On Stage"
-                                android:textColor="@color/white"
-                                android:textSize="32sp"></TextView>
+                    <Space
+                        android:layout_width="300dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"></Space>
 
-                            <CheckBox
-                                android:id="@+id/onStageCheckbox"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:buttonTint="@color/white" />
-                        </TableRow>
+                    <CheckBox
+                        android:id="@+id/pitChain"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"></CheckBox>
+                </TableRow>
 
-                        <TableRow>
+                <TableRow>
 
-                            <TextView
-                                android:id="@+id/scoreTrapText"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Score Trap"
-                                android:textColor="@color/white"
-                                android:textSize="32sp"></TextView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Can score in speaker"
+                        android:textColor="@color/white"
+                        android:textSize="32sp"></TextView>
 
-                            <CheckBox
-                                android:id="@+id/scoreTrapCheckbox"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:buttonTint="@color/white" />
-                        </TableRow>
+                    <Space
+                        android:layout_width="300dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"></Space>
 
-                        <TableRow>
+                    <CheckBox
+                        android:id="@+id/pitSpeaker"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"></CheckBox>
+                </TableRow>
 
-                            <TextView
-                                android:id="@+id/spotlight"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Spotlight"
-                                android:textColor="@color/white"
-                                android:textSize="32sp"></TextView>
+                <TableRow>
 
-                            <CheckBox
-                                android:id="@+id/spotlightCheckbox"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:buttonTint="@color/white" />
-                        </TableRow>
-                    </TableLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Can score in amp"
+                        android:textColor="@color/white"
+                        android:textSize="32sp"></TextView>
 
-                </TableLayout>
-            </ScrollView>
-        </RelativeLayout>
+                    <Space
+                        android:layout_width="300dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"></Space>
+
+                    <CheckBox
+                        android:id="@+id/pitAmp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"></CheckBox>
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Can pick up notes from ground"
+                        android:textColor="@color/white"
+                        android:textSize="32sp"></TextView>
+
+                    <Space
+                        android:layout_width="300dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"></Space>
+
+                    <CheckBox
+                        android:id="@+id/pitGroundNotes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"></CheckBox>
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Can pick up notes from loading"
+                        android:textColor="@color/white"
+                        android:textSize="32sp"></TextView>
+
+                    <Space
+                        android:layout_width="300dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"></Space>
+
+                    <CheckBox
+                        android:id="@+id/pitLoadingNotes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"></CheckBox>
+                </TableRow>
+            </TableLayout>
+        </ScrollView>
+
+        <ScrollView
+            android:id="@+id/autoData"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#99810E44"
+            android:padding="32dp"
+            android:visibility="gone">
+
+            <TableLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Notes in Amp Scored"
+                        android:textColor="@color/white"
+                        android:textSize="32sp"></TextView>
+
+                    <Space
+                        android:layout_width="500dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"></Space>
+
+                    <Button
+                        android:id="@+id/autoAmpsScoredMinus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"
+                        android:text="-"
+                        android:textColor="@color/white"
+                        android:textSize="32dp"></Button>
+
+                    <TextView
+                        android:id="@+id/autoAmpsScored"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:text="0"
+                        android:textColor="@color/white"
+                        android:textSize="32dp"></TextView>
+
+                    <Button
+                        android:id="@+id/autoAmpsScoredPlus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"
+                        android:text="+"
+                        android:textColor="@color/white"
+                        android:textSize="32dp"></Button>
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Notes in Speaker Scored"
+                        android:textColor="@color/white"
+                        android:textSize="32sp"></TextView>
+
+                    <Space
+                        android:layout_width="500dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"></Space>
+
+                    <Button
+                        android:id="@+id/autoSpeakerScoredMinus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"
+                        android:text="-"
+                        android:textColor="@color/white"
+                        android:textSize="32dp"></Button>
+
+                    <TextView
+                        android:id="@+id/autoSpeakerScored"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:text="0"
+                        android:textColor="@color/white"
+                        android:textSize="32dp"></TextView>
+
+                    <Button
+                        android:id="@+id/autoSpeakerScoredPlus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"
+                        android:text="+"
+                        android:textColor="@color/white"
+                        android:textSize="32dp"></Button>
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Shots Attempted"
+                        android:textColor="@color/white"
+                        android:textSize="32sp"></TextView>
+
+                    <Space
+                        android:layout_width="500dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"></Space>
+
+                    <Button
+                        android:id="@+id/autoShotsAttemptedMinus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"
+                        android:text="-"
+                        android:textColor="@color/white"
+                        android:textSize="32dp"></Button>
+
+                    <TextView
+                        android:id="@+id/autoShotsAttempted"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:text="0"
+                        android:textColor="@color/white"
+                        android:textSize="32dp"></TextView>
+
+                    <Button
+                        android:id="@+id/autoShotsAttemptedPlus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"
+                        android:text="+"
+                        android:textColor="@color/white"
+                        android:textSize="32dp"></Button>
+                </TableRow>
+            </TableLayout>
+        </ScrollView>
+
+        <ScrollView
+            android:id="@+id/teleopData"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#992B2D42"
+            android:padding="32dp"
+            android:visibility="gone"></ScrollView>
     </LinearLayout>
 
     <Button
@@ -650,7 +600,7 @@
         android:layout_width="@dimen/_200sdp"
         android:layout_height="@dimen/_200sdp"
         android:background="@color/black"
-        android:visibility="gone"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -658,5 +608,21 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5"></ImageView>
 
+    <ImageView
+        android:id="@+id/cat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@null"
+        android:src="@drawable/cat"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        android:scaleX="3"
+        android:scaleY="3"
+        android:visibility="gone">
+    </ImageView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
