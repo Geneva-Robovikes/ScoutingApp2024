@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:text="Robovikes #3067 - Scouting App"
                 android:textColor="@color/white"
-                android:textSize="36dp" />
+                android:textSize="36sp" />
 
             <Space
                 android:layout_width="0dp"
@@ -475,7 +475,7 @@
                         android:scaleY="0.8"
                         android:text="-"
                         android:textColor="@color/white"
-                        android:textSize="32dp"></Button>
+                        android:textSize="32sp"></Button>
 
                     <TextView
                         android:id="@+id/autoAmpsScored"
@@ -484,7 +484,7 @@
                         android:layout_marginHorizontal="16dp"
                         android:text="0"
                         android:textColor="@color/white"
-                        android:textSize="32dp"></TextView>
+                        android:textSize="32sp"></TextView>
 
                     <Button
                         android:id="@+id/autoAmpsScoredPlus"
@@ -494,7 +494,7 @@
                         android:scaleY="0.8"
                         android:text="+"
                         android:textColor="@color/white"
-                        android:textSize="32dp"></Button>
+                        android:textSize="32sp"></Button>
                 </TableRow>
 
                 <TableRow>
@@ -519,7 +519,7 @@
                         android:scaleY="0.8"
                         android:text="-"
                         android:textColor="@color/white"
-                        android:textSize="32dp"></Button>
+                        android:textSize="32sp"></Button>
 
                     <TextView
                         android:id="@+id/autoSpeakerScored"
@@ -528,7 +528,7 @@
                         android:layout_marginHorizontal="16dp"
                         android:text="0"
                         android:textColor="@color/white"
-                        android:textSize="32dp"></TextView>
+                        android:textSize="32sp"></TextView>
 
                     <Button
                         android:id="@+id/autoSpeakerScoredPlus"
@@ -538,7 +538,7 @@
                         android:scaleY="0.8"
                         android:text="+"
                         android:textColor="@color/white"
-                        android:textSize="32dp"></Button>
+                        android:textSize="32sp"></Button>
                 </TableRow>
 
                 <TableRow>
@@ -563,7 +563,7 @@
                         android:scaleY="0.8"
                         android:text="-"
                         android:textColor="@color/white"
-                        android:textSize="32dp"></Button>
+                        android:textSize="32sp"></Button>
 
                     <TextView
                         android:id="@+id/autoShotsAttempted"
@@ -572,7 +572,7 @@
                         android:layout_marginHorizontal="16dp"
                         android:text="0"
                         android:textColor="@color/white"
-                        android:textSize="32dp"></TextView>
+                        android:textSize="32sp"></TextView>
 
                     <Button
                         android:id="@+id/autoShotsAttemptedPlus"
@@ -582,7 +582,7 @@
                         android:scaleY="0.8"
                         android:text="+"
                         android:textColor="@color/white"
-                        android:textSize="32dp">
+                        android:textSize="32sp">
                     </Button>
                 </TableRow>
                 <TableRow>
@@ -607,7 +607,7 @@
                         android:scaleY="0.8"
                         android:text="-"
                         android:textColor="@color/white"
-                        android:textSize="32dp">
+                        android:textSize="32sp">
                     </Button>
 
                     <TextView
@@ -617,7 +617,7 @@
                         android:layout_marginHorizontal="16dp"
                         android:text="0"
                         android:textColor="@color/white"
-                        android:textSize="32dp">
+                        android:textSize="32sp">
                     </TextView>
 
                     <Button
@@ -628,7 +628,7 @@
                         android:scaleY="0.8"
                         android:text="+"
                         android:textColor="@color/white"
-                        android:textSize="32dp">
+                        android:textSize="32sp">
                     </Button>
                 </TableRow>
                 <TableRow>
@@ -731,7 +731,7 @@
                         android:scaleY="0.8"
                         android:text="-"
                         android:textColor="@color/white"
-                        android:textSize="32dp"></Button>
+                        android:textSize="32sp"></Button>
 
                     <TextView
                         android:id="@+id/AmpsScored"
@@ -740,7 +740,7 @@
                         android:layout_marginHorizontal="16dp"
                         android:text="0"
                         android:textColor="@color/white"
-                        android:textSize="32dp"></TextView>
+                        android:textSize="32sp"></TextView>
 
                     <Button
                         android:id="@+id/AmpsScoredPlus"
@@ -750,7 +750,7 @@
                         android:scaleY="0.8"
                         android:text="+"
                         android:textColor="@color/white"
-                        android:textSize="32dp"></Button>
+                        android:textSize="32sp"></Button>
                 </TableRow>
 
                 <TableRow>
@@ -775,7 +775,7 @@
                         android:scaleY="0.8"
                         android:text="-"
                         android:textColor="@color/white"
-                        android:textSize="32dp"></Button>
+                        android:textSize="32sp"></Button>
 
                     <TextView
                         android:id="@+id/SpeakerScored"
@@ -784,7 +784,7 @@
                         android:layout_marginHorizontal="16dp"
                         android:text="0"
                         android:textColor="@color/white"
-                        android:textSize="32dp"></TextView>
+                        android:textSize="32sp"></TextView>
 
                     <Button
                         android:id="@+id/SpeakerScoredPlus"
@@ -794,7 +794,7 @@
                         android:scaleY="0.8"
                         android:text="+"
                         android:textColor="@color/white"
-                        android:textSize="32dp"></Button>
+                        android:textSize="32sp"></Button>
                 </TableRow>
 
                 <TableRow>
@@ -819,7 +819,7 @@
                         android:scaleY="0.8"
                         android:text="-"
                         android:textColor="@color/white"
-                        android:textSize="32dp"></Button>
+                        android:textSize="32sp"></Button>
 
                     <TextView
                         android:id="@+id/ShotsAttempted"
@@ -828,7 +828,7 @@
                         android:layout_marginHorizontal="16dp"
                         android:text="0"
                         android:textColor="@color/white"
-                        android:textSize="32dp"></TextView>
+                        android:textSize="32sp"></TextView>
 
                     <Button
                         android:id="@+id/ShotsAttemptedPlus"
@@ -838,7 +838,7 @@
                         android:scaleY="0.8"
                         android:text="+"
                         android:textColor="@color/white"
-                        android:textSize="32dp">
+                        android:textSize="32sp">
                     </Button>
                 </TableRow>
                 <TableRow>
@@ -863,7 +863,7 @@
                         android:scaleY="0.8"
                         android:text="-"
                         android:textColor="@color/white"
-                        android:textSize="32dp">
+                        android:textSize="32sp">
                     </Button>
 
                     <TextView
@@ -873,7 +873,7 @@
                         android:layout_marginHorizontal="16dp"
                         android:text="0"
                         android:textColor="@color/white"
-                        android:textSize="32dp">
+                        android:textSize="32sp">
                     </TextView>
 
                     <Button
@@ -884,7 +884,7 @@
                         android:scaleY="0.8"
                         android:text="+"
                         android:textColor="@color/white"
-                        android:textSize="32dp">
+                        android:textSize="32sp">
                     </Button>
                 </TableRow>
                 <TableRow>
