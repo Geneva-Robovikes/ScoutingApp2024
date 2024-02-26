@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.media.Image;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.text.Layout;
 import android.view.View;
 import android.widget.Button;
@@ -78,8 +79,8 @@ public class MainActivity extends AppCompatActivity {
         EditText TeamName = (EditText)findViewById(R.id.editTeamName);
         //qr code
         ImageView QRCode = (ImageView) findViewById(R.id.QRCODE);
+        Queue combo = new Queue();
 
-        //auto
         EditText RobotHeight = findViewById(R.id.robotHeight);
         EditText RobotWidth = findViewById(R.id.robotWidth);
         EditText RobotWidthBumper = findViewById(R.id.robotWidthBumper);
@@ -93,15 +94,47 @@ public class MainActivity extends AppCompatActivity {
         CheckBox CanPickNotesGround = findViewById(R.id.pitGroundNotes);
         CheckBox CanPickNotesLoading = findViewById(R.id.pitLoadingNotes);
 
-        Queue combo = new Queue();
+
         //auto
         AdditionButton AutoAmpsScored = new AdditionButton(findViewById(R.id.autoAmpsScoredPlus),findViewById(R.id.autoAmpsScoredMinus),findViewById(R.id.autoAmpsScored),"Auto: Notes in Amp Scored");
         AdditionButton AutoSpeakersScored = new AdditionButton(findViewById(R.id.autoSpeakerScoredPlus),findViewById(R.id.autoSpeakerScoredMinus),findViewById(R.id.autoSpeakerScored),"Auto: Notes in Speaker Scored");
         AdditionButton AutoShotsAttempted = new AdditionButton(findViewById(R.id.autoShotsAttemptedPlus),findViewById(R.id.autoShotsAttemptedMinus),findViewById(R.id.autoShotsAttempted),"Auto: Shots Attempted");
+        AdditionButton AutoShotsMade = new AdditionButton(findViewById(R.id.autoShotsMadePlus),findViewById(R.id.autoShotsMadeMinus),findViewById(R.id.autoShotsMade),"Auto: Shots Made");
+        AdditionButton[] autoAdditionButtons = {AutoAmpsScored,AutoSpeakersScored,AutoShotsAttempted,AutoShotsMade};
+        CheckBox AutoLeftStartingArea = findViewById(R.id.autoLeftArea);
+        CheckBox AutoCompletedClimb = findViewById(R.id.autoClimb);
+        CheckBox AutoCompletedTrap = findViewById(R.id.autoTrap);
 
-        AdditionButton[] additionButtons = {AutoAmpsScored,AutoSpeakersScored,AutoShotsAttempted};
+        for (AdditionButton widget : autoAdditionButtons){
+            widget.plus.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    widget.value++;
+                    widget.text.setText(String.valueOf(widget.value));
+                }
+            });
+            widget.minus.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    widget.value--;
+                    widget.text.setText(String.valueOf(widget.value));
+                }
+            });
+        }
+        //teleop
+        AdditionButton AmpsScored = new AdditionButton(findViewById(R.id.AmpsScoredPlus),findViewById(R.id.AmpsScoredMinus),findViewById(R.id.AmpsScored),"Teleop: Notes in Amp Scored");
+        AdditionButton SpeakersScored = new AdditionButton(findViewById(R.id.SpeakerScoredPlus),findViewById(R.id.SpeakerScoredMinus),findViewById(R.id.SpeakerScored),"Teleop: Notes in Speaker Scored");
+        AdditionButton ShotsAttempted = new AdditionButton(findViewById(R.id.ShotsAttemptedPlus),findViewById(R.id.ShotsAttemptedMinus),findViewById(R.id.ShotsAttempted),"Teleop: Shots Attempted");
+        AdditionButton ShotsMade = new AdditionButton(findViewById(R.id.ShotsMadePlus),findViewById(R.id.ShotsMadeMinus),findViewById(R.id.ShotsMade),"Teleop: Shots Made");
 
-        for (AdditionButton widget : additionButtons){
+        CheckBox LeftArea = findViewById(R.id.LeftArea);
+        CheckBox CompletedClimb = findViewById(R.id.Climb);
+        CheckBox CompletedTrap = findViewById(R.id.Trap);
+        CheckBox BrokeDownFully = findViewById(R.id.BrokeDownFully);
+        CheckBox BrokeDownRestarted = findViewById(R.id.BrokeDownRestarted);
+        AdditionButton[] teleopAdditionButtons = {AmpsScored,SpeakersScored,ShotsAttempted,ShotsMade};
+
+        for (AdditionButton widget : teleopAdditionButtons){
             widget.plus.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -118,13 +151,35 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
+
         //section buttons
         SectionButton PitSectionButton = new SectionButton(findViewById(R.id.toPitButton),findViewById(R.id.pitData), new ScrollView[]{findViewById(R.id.autoData), findViewById(R.id.teleopData)},"1");
         SectionButton AutoSectionButton = new SectionButton(findViewById(R.id.toAutoButton),findViewById(R.id.autoData), new ScrollView[]{findViewById(R.id.pitData), findViewById(R.id.teleopData)},"2");
         SectionButton TeleopSection = new SectionButton(findViewById(R.id.toTeleopButton),findViewById(R.id.teleopData), new ScrollView[]{findViewById(R.id.pitData), findViewById(R.id.autoData)},"3");
 
+        //Note buttons
+        NoteButton Mid1 = new NoteButton(findViewById(R.id.Mid1),"Mid 1");
+        NoteButton Mid2 = new NoteButton(findViewById(R.id.Mid2),"Mid 2");
+        NoteButton Mid3 = new NoteButton(findViewById(R.id.Mid3),"Mid 3");
+        NoteButton Mid4 = new NoteButton(findViewById(R.id.Mid4),"Mid 4");
+        NoteButton Mid5 = new NoteButton(findViewById(R.id.Mid5),"Mid 5");
+
+        NoteButton Right1 = new NoteButton(findViewById(R.id.Right1),"Right 1");
+        NoteButton Right2 = new NoteButton(findViewById(R.id.Right2),"Right 2");
+        NoteButton Right3 = new NoteButton(findViewById(R.id.Right3),"Right 3");
+
+        NoteButton[] noteButtons = {Mid1, Mid2, Mid3, Mid4, Mid5, Right1, Right2, Right3};
+
+        for (NoteButton note : noteButtons){
+            note.button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    note.changeState();
+                }
+            });
+        }
+
         //REMOVE LATER
-        TextView testingTitle = findViewById(R.id.TESTINGTITLE);
         SectionButton[] sectionButtons = {PitSectionButton,AutoSectionButton,TeleopSection};
         for (SectionButton widget : sectionButtons){
             widget.button.setOnClickListener(new View.OnClickListener() {
@@ -140,8 +195,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                     //the funny
                     combo.push(widget.id);
-
-                    testingTitle.setText(String.join("-",combo.list));
                     if (Arrays.equals(new String[]{"1", "2", "3", "1", "1", "2", "1", "3", "1", "1"},combo.list)){
                         findViewById(R.id.cat).setVisibility(View.VISIBLE);
                     }
@@ -183,16 +236,44 @@ public class MainActivity extends AppCompatActivity {
                 //this is a mess and im sorry
                 ArrayList<String[]> textMap = new ArrayList<String[]>();
                 String csvFile = "";
-                /*
-                teamName = String.valueOf(TeamName.getText());
-                for (AdditionButton thingy : ploos){
-                    textMap.add(new String[]{String.valueOf(thingy.name)+",",String.valueOf(thingy.value)});
-                }
-                for (NoteData noot : noteArray){
-                    textMap.add(new String[]{String.valueOf(noot.name)+",",String.valueOf(noot.state)});
-                }
 
-                 */
+                textMap.add(new String[]{"Team",String.valueOf(TeamName.getText())});
+
+                //auto section
+                textMap.add(new String[]{"Robot Height",String.valueOf(RobotHeight.getText())});
+                textMap.add(new String[]{"Robot Width w/o bumper",String.valueOf(RobotWidth.getText())});
+                textMap.add(new String[]{"Robot Width w/ bumper",String.valueOf(RobotWidthBumper.getText())});
+                textMap.add(new String[]{"Robot Length w/o bumper",String.valueOf(RobotLengthBumper.getText())});
+                textMap.add(new String[]{"Robot Length w/ bumper",String.valueOf(RobotLength.getText())});
+                textMap.add(new String[]{"Cycle Time",String.valueOf(CycleTime.getText())});
+                textMap.add(new String[]{"Drive Type",String.valueOf(DriveType.getText())});
+                textMap.add(new String[]{"Can hang on chain",String.valueOf(CanHangOnChain.isChecked())});
+                textMap.add(new String[]{"Can score in speaker",String.valueOf(CanSpeaker.isChecked())});
+                textMap.add(new String[]{"Can score in amp",String.valueOf(CanAmp.isChecked())});
+                textMap.add(new String[]{"Can pick up notes from ground",String.valueOf(CanPickNotesGround.isChecked())});
+                textMap.add(new String[]{"Can pick up notes from loading",String.valueOf(CanPickNotesLoading.isChecked())});
+                //auto section
+                for (AdditionButton widget : autoAdditionButtons){
+                    textMap.add(new String[]{String.valueOf(widget.name),String.valueOf(widget.value)});
+                }
+                textMap.add(new String[]{"Auto: Left Starting Area", String.valueOf(AutoLeftStartingArea.isChecked())});
+                textMap.add(new String[]{"Auto: Completed Climb", String.valueOf(AutoCompletedClimb.isChecked())});
+                textMap.add(new String[]{"Auto: Completed Trap", String.valueOf(AutoCompletedTrap.isChecked())});
+
+                //teleop
+                for (AdditionButton widget : teleopAdditionButtons){
+                    textMap.add(new String[]{String.valueOf(widget.name),String.valueOf(widget.value)});
+                }
+                textMap.add(new String[]{"Teleop: Left Starting Area", String.valueOf(LeftArea.isChecked())});
+                textMap.add(new String[]{"Teleop: Completed Climb", String.valueOf(CompletedClimb.isChecked())});
+                textMap.add(new String[]{"Teleop: Completed Trap", String.valueOf(CompletedTrap.isChecked())});
+                textMap.add(new String[]{"Teleop: Broke Down but Restarted", String.valueOf(BrokeDownRestarted.isChecked())});
+                textMap.add(new String[]{"Teleop: Broke Down not restarted", String.valueOf(BrokeDownFully.isChecked())});
+
+                //notes map
+                for (NoteButton noot: noteButtons){
+                    textMap.add(new String[]{String.valueOf(noot.name),String.valueOf(noot.state)});
+                }
 
                 QRCode.setVisibility(View.VISIBLE);
                 //turn arraylist to string
@@ -200,8 +281,9 @@ public class MainActivity extends AppCompatActivity {
                 for (String[] row : textMap){
                     for (int i = 0; i < row.length; i++){
                         csvFile+=row[i];
+                        csvFile+=",";
                     }
-                    csvFile += ",";
+                    csvFile += "\n";
                 }
 
                 MultiFormatWriter mWriter = new MultiFormatWriter();

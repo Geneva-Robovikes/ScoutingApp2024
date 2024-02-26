@@ -10,5 +10,15 @@ public class NoteButton {
         this.button = button;
         this.name = name;
     }
+    public void changeState(){
+        if (state == false){
+            state = true;
+            button.setImageResource(R.drawable.checked_circle_foreground);
+        }
+        else {
+            state = false;
+            button.setImageResource(R.drawable.empty_circle_foreground);
+        }
+    }
 
 }

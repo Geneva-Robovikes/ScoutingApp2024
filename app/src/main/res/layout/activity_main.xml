@@ -172,7 +172,9 @@
                         android:inputType="numberDecimal"
                         android:textAlignment="center"
                         android:textColorHint="@color/white"
-                        android:textSize="20sp"></EditText>
+                        android:textSize="20sp"
+                        android:layout_marginRight="32dp">
+                    </EditText>
                 </TableRow>
 
                 <TableRow>
@@ -197,7 +199,9 @@
                         android:inputType="numberDecimal"
                         android:textAlignment="center"
                         android:textColorHint="@color/white"
-                        android:textSize="20sp"></EditText>
+                        android:textSize="20sp"
+                        android:layout_marginRight="32dp">
+                </EditText>
                 </TableRow>
 
                 <TableRow>
@@ -222,7 +226,9 @@
                         android:inputType="numberDecimal"
                         android:textAlignment="center"
                         android:textColorHint="@color/white"
-                        android:textSize="20sp"></EditText>
+                        android:textSize="20sp"
+                        android:layout_marginRight="32dp">
+                    </EditText>
                 </TableRow>
 
                 <TableRow>
@@ -247,7 +253,9 @@
                         android:inputType="numberDecimal"
                         android:textAlignment="center"
                         android:textColorHint="@color/white"
-                        android:textSize="20sp"></EditText>
+                        android:textSize="20sp"
+                        android:layout_marginRight="32dp">
+                    </EditText>
                 </TableRow>
 
                 <TableRow>
@@ -272,7 +280,9 @@
                         android:inputType="numberDecimal"
                         android:textAlignment="center"
                         android:textColorHint="@color/white"
-                        android:textSize="20sp"></EditText>
+                        android:textSize="20sp"
+                        android:layout_marginRight="32dp">
+                    </EditText>
                 </TableRow>
 
                 <TableRow>
@@ -297,7 +307,9 @@
                         android:inputType="numberDecimal"
                         android:textAlignment="center"
                         android:textColorHint="@color/white"
-                        android:textSize="20sp"></EditText>
+                        android:textSize="20sp"
+                        android:layout_marginRight="32dp">
+                    </EditText>
                 </TableRow>
 
                 <TableRow>
@@ -322,7 +334,9 @@
                         android:inputType="text"
                         android:textAlignment="center"
                         android:textColorHint="@color/white"
-                        android:textSize="20sp"></EditText>
+                        android:textSize="20sp"
+                        android:layout_marginRight="32dp">
+                    </EditText>
                 </TableRow>
 
                 <TableRow>
@@ -568,7 +582,118 @@
                         android:scaleY="0.8"
                         android:text="+"
                         android:textColor="@color/white"
-                        android:textSize="32dp"></Button>
+                        android:textSize="32dp">
+                    </Button>
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Shots Made"
+                        android:textColor="@color/white"
+                        android:textSize="32sp">
+                    </TextView>
+                    <Space
+                        android:layout_width="500dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+                    </Space>
+
+                    <Button
+                        android:id="@+id/autoShotsMadeMinus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"
+                        android:text="-"
+                        android:textColor="@color/white"
+                        android:textSize="32dp">
+                    </Button>
+
+                    <TextView
+                        android:id="@+id/autoShotsMade"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:text="0"
+                        android:textColor="@color/white"
+                        android:textSize="32dp">
+                    </TextView>
+
+                    <Button
+                        android:id="@+id/autoShotsMadePlus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"
+                        android:text="+"
+                        android:textColor="@color/white"
+                        android:textSize="32dp">
+                    </Button>
+                </TableRow>
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Left Starting Area"
+                        android:textColor="@color/white"
+                        android:textSize="32sp">
+                    </TextView>
+
+                    <Space
+                        android:layout_width="300dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+                    </Space>
+
+                    <CheckBox
+                        android:id="@+id/autoLeftArea"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                    </CheckBox>
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Completed Climb"
+                        android:textColor="@color/white"
+                        android:textSize="32sp">
+                    </TextView>
+
+                    <Space
+                        android:layout_width="300dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+                    </Space>
+
+                    <CheckBox
+                        android:id="@+id/autoClimb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                    </CheckBox>
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Completed Trap"
+                        android:textColor="@color/white"
+                        android:textSize="32sp">
+                    </TextView>
+
+                    <Space
+                        android:layout_width="300dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+                    </Space>
+
+                    <CheckBox
+                        android:id="@+id/autoTrap"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                    </CheckBox>
                 </TableRow>
             </TableLayout>
         </ScrollView>
@@ -579,7 +704,297 @@
             android:layout_height="match_parent"
             android:background="#992B2D42"
             android:padding="32dp"
-            android:visibility="gone"></ScrollView>
+            android:visibility="gone">
+            <TableLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Notes in Amp Scored"
+                        android:textColor="@color/white"
+                        android:textSize="32sp"></TextView>
+
+                    <Space
+                        android:layout_width="500dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"></Space>
+
+                    <Button
+                        android:id="@+id/AmpsScoredMinus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"
+                        android:text="-"
+                        android:textColor="@color/white"
+                        android:textSize="32dp"></Button>
+
+                    <TextView
+                        android:id="@+id/AmpsScored"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:text="0"
+                        android:textColor="@color/white"
+                        android:textSize="32dp"></TextView>
+
+                    <Button
+                        android:id="@+id/AmpsScoredPlus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"
+                        android:text="+"
+                        android:textColor="@color/white"
+                        android:textSize="32dp"></Button>
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Notes in Speaker Scored"
+                        android:textColor="@color/white"
+                        android:textSize="32sp"></TextView>
+
+                    <Space
+                        android:layout_width="500dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"></Space>
+
+                    <Button
+                        android:id="@+id/SpeakerScoredMinus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"
+                        android:text="-"
+                        android:textColor="@color/white"
+                        android:textSize="32dp"></Button>
+
+                    <TextView
+                        android:id="@+id/SpeakerScored"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:text="0"
+                        android:textColor="@color/white"
+                        android:textSize="32dp"></TextView>
+
+                    <Button
+                        android:id="@+id/SpeakerScoredPlus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"
+                        android:text="+"
+                        android:textColor="@color/white"
+                        android:textSize="32dp"></Button>
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Shots Attempted"
+                        android:textColor="@color/white"
+                        android:textSize="32sp"></TextView>
+
+                    <Space
+                        android:layout_width="500dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"></Space>
+
+                    <Button
+                        android:id="@+id/ShotsAttemptedMinus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"
+                        android:text="-"
+                        android:textColor="@color/white"
+                        android:textSize="32dp"></Button>
+
+                    <TextView
+                        android:id="@+id/ShotsAttempted"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:text="0"
+                        android:textColor="@color/white"
+                        android:textSize="32dp"></TextView>
+
+                    <Button
+                        android:id="@+id/ShotsAttemptedPlus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"
+                        android:text="+"
+                        android:textColor="@color/white"
+                        android:textSize="32dp">
+                    </Button>
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Shots Made"
+                        android:textColor="@color/white"
+                        android:textSize="32sp">
+                    </TextView>
+                    <Space
+                        android:layout_width="500dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+                    </Space>
+
+                    <Button
+                        android:id="@+id/ShotsMadeMinus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"
+                        android:text="-"
+                        android:textColor="@color/white"
+                        android:textSize="32dp">
+                    </Button>
+
+                    <TextView
+                        android:id="@+id/ShotsMade"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:text="0"
+                        android:textColor="@color/white"
+                        android:textSize="32dp">
+                    </TextView>
+
+                    <Button
+                        android:id="@+id/ShotsMadePlus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"
+                        android:text="+"
+                        android:textColor="@color/white"
+                        android:textSize="32dp">
+                    </Button>
+                </TableRow>
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Left Starting Area"
+                        android:textColor="@color/white"
+                        android:textSize="32sp">
+                    </TextView>
+
+                    <Space
+                        android:layout_width="300dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+                    </Space>
+
+                    <CheckBox
+                        android:id="@+id/LeftArea"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                    </CheckBox>
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Completed Climb"
+                        android:textColor="@color/white"
+                        android:textSize="32sp">
+                    </TextView>
+
+                    <Space
+                        android:layout_width="300dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+                    </Space>
+
+                    <CheckBox
+                        android:id="@+id/Climb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                    </CheckBox>
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Completed Trap"
+                        android:textColor="@color/white"
+                        android:textSize="32sp">
+                    </TextView>
+
+                    <Space
+                        android:layout_width="300dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+                    </Space>
+
+                    <CheckBox
+                        android:id="@+id/Trap"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                    </CheckBox>
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Broke down, can't be restarted"
+                        android:textColor="@color/white"
+                        android:textSize="32sp">
+                    </TextView>
+
+                    <Space
+                        android:layout_width="300dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+                    </Space>
+
+                    <CheckBox
+                        android:id="@+id/BrokeDownFully"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                    </CheckBox>
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Broke down, but restarted"
+                        android:textColor="@color/white"
+                        android:textSize="32sp">
+                    </TextView>
+
+                    <Space
+                        android:layout_width="300dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+                    </Space>
+
+                    <CheckBox
+                        android:id="@+id/BrokeDownRestarted"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                    </CheckBox>
+                </TableRow>
+            </TableLayout>
+        </ScrollView>
     </LinearLayout>
 
     <Button
