@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -94,6 +95,9 @@ public class MainActivity extends AppCompatActivity {
         CheckBox CanPickNotesGround = findViewById(R.id.pitGroundNotes);
         CheckBox CanPickNotesLoading = findViewById(R.id.pitLoadingNotes);
 
+        //team
+        RadioButton teamBlue = findViewById(R.id.blueteam);
+        RadioButton teamRed = findViewById(R.id.redteam);
 
         //auto
         AdditionButton AutoAmpsScored = new AdditionButton(findViewById(R.id.autoAmpsScoredPlus),findViewById(R.id.autoAmpsScoredMinus),findViewById(R.id.autoAmpsScored),"Auto: Notes in Amp Scored");
@@ -134,6 +138,7 @@ public class MainActivity extends AppCompatActivity {
         CheckBox BrokeDownRestarted = findViewById(R.id.BrokeDownRestarted);
         AdditionButton[] teleopAdditionButtons = {AmpsScored,SpeakersScored,ShotsAttempted,ShotsMade};
 
+        EditText matchNumber = findViewById(R.id.matchnumber);
         for (AdditionButton widget : teleopAdditionButtons){
             widget.plus.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -179,7 +184,6 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
-        //REMOVE LATER
         SectionButton[] sectionButtons = {PitSectionButton,AutoSectionButton,TeleopSection};
         for (SectionButton widget : sectionButtons){
             widget.button.setOnClickListener(new View.OnClickListener() {
@@ -237,7 +241,10 @@ public class MainActivity extends AppCompatActivity {
                 ArrayList<String[]> textMap = new ArrayList<String[]>();
                 String csvFile = "";
 
-                textMap.add(new String[]{"Team",String.valueOf(TeamName.getText())});
+                textMap.add(new String[]{"Team Name",String.valueOf(TeamName.getText())});
+                textMap.add(new String[]{"Match #",String.valueOf(matchNumber.getText())});
+                if (teamBlue.isChecked()) textMap.add(new String[]{"Team","Blue"});
+                else textMap.add(new String[]{"Team","Red"});
 
                 //auto section
                 textMap.add(new String[]{"Robot Height",String.valueOf(RobotHeight.getText())});
