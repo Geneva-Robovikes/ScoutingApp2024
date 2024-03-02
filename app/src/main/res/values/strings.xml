@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">ScoutingApp2024</string>
+    <string name="teamnumber">Team #:</string>
+    <string name="enter_teamname">Enter Team #</string>
+    <string name="matchnumber">Match #</string>
+    <string name="blue_team">Blue Team</string>
+    <string name="red_team">Red Team</string>
+    <string name="generate_qr_code">Generate QR Code</string>
 </resources>

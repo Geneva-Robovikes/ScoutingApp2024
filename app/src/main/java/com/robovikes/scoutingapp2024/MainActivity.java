@@ -3,11 +3,16 @@ package com.robovikes.scoutingapp2024;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.icu.text.CaseMap;
 import android.media.Image;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.text.Editable;
 import android.text.Layout;
+import android.text.TextWatcher;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -35,6 +40,8 @@ import java.util.Dictionary;
 import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Random;
+
+import pl.droidsonroids.gif.GifImageView;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -67,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
     int ampScore = 0;
     boolean onStage = false;
     boolean scoreTrap = false;
+    int cookies = 0;
     boolean spotlight = false;
     int autoSpeakerScore = 0;
     int autoAmpScore = 0;
@@ -102,12 +110,8 @@ public class MainActivity extends AppCompatActivity {
         //auto
         AdditionButton AutoAmpsScored = new AdditionButton(findViewById(R.id.autoAmpsScoredPlus),findViewById(R.id.autoAmpsScoredMinus),findViewById(R.id.autoAmpsScored),"Auto: Notes in Amp Scored");
         AdditionButton AutoSpeakersScored = new AdditionButton(findViewById(R.id.autoSpeakerScoredPlus),findViewById(R.id.autoSpeakerScoredMinus),findViewById(R.id.autoSpeakerScored),"Auto: Notes in Speaker Scored");
-        AdditionButton AutoShotsAttempted = new AdditionButton(findViewById(R.id.autoShotsAttemptedPlus),findViewById(R.id.autoShotsAttemptedMinus),findViewById(R.id.autoShotsAttempted),"Auto: Shots Attempted");
-        AdditionButton AutoShotsMade = new AdditionButton(findViewById(R.id.autoShotsMadePlus),findViewById(R.id.autoShotsMadeMinus),findViewById(R.id.autoShotsMade),"Auto: Shots Made");
-        AdditionButton[] autoAdditionButtons = {AutoAmpsScored,AutoSpeakersScored,AutoShotsAttempted,AutoShotsMade};
+        AdditionButton[] autoAdditionButtons = {AutoAmpsScored,AutoSpeakersScored};
         CheckBox AutoLeftStartingArea = findViewById(R.id.autoLeftArea);
-        CheckBox AutoCompletedClimb = findViewById(R.id.autoClimb);
-        CheckBox AutoCompletedTrap = findViewById(R.id.autoTrap);
 
         for (AdditionButton widget : autoAdditionButtons){
             widget.plus.setOnClickListener(new View.OnClickListener() {
@@ -128,15 +132,14 @@ public class MainActivity extends AppCompatActivity {
         //teleop
         AdditionButton AmpsScored = new AdditionButton(findViewById(R.id.AmpsScoredPlus),findViewById(R.id.AmpsScoredMinus),findViewById(R.id.AmpsScored),"Teleop: Notes in Amp Scored");
         AdditionButton SpeakersScored = new AdditionButton(findViewById(R.id.SpeakerScoredPlus),findViewById(R.id.SpeakerScoredMinus),findViewById(R.id.SpeakerScored),"Teleop: Notes in Speaker Scored");
-        AdditionButton ShotsAttempted = new AdditionButton(findViewById(R.id.ShotsAttemptedPlus),findViewById(R.id.ShotsAttemptedMinus),findViewById(R.id.ShotsAttempted),"Teleop: Shots Attempted");
-        AdditionButton ShotsMade = new AdditionButton(findViewById(R.id.ShotsMadePlus),findViewById(R.id.ShotsMadeMinus),findViewById(R.id.ShotsMade),"Teleop: Shots Made");
+        AdditionButton ShotsMissed = new AdditionButton(findViewById(R.id.ShotsMissedPlus),findViewById(R.id.ShotsMissedMinus),findViewById(R.id.ShotsMissed),"Teleop: Shots Attempted");
 
-        CheckBox LeftArea = findViewById(R.id.LeftArea);
+
         CheckBox CompletedClimb = findViewById(R.id.Climb);
         CheckBox CompletedTrap = findViewById(R.id.Trap);
         CheckBox BrokeDownFully = findViewById(R.id.BrokeDownFully);
         CheckBox BrokeDownRestarted = findViewById(R.id.BrokeDownRestarted);
-        AdditionButton[] teleopAdditionButtons = {AmpsScored,SpeakersScored,ShotsAttempted,ShotsMade};
+        AdditionButton[] teleopAdditionButtons = {AmpsScored,SpeakersScored,ShotsMissed};
 
         EditText matchNumber = findViewById(R.id.matchnumber);
         for (AdditionButton widget : teleopAdditionButtons){
@@ -185,6 +188,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         SectionButton[] sectionButtons = {PitSectionButton,AutoSectionButton,TeleopSection};
+        GifImageView AMONGUS = findViewById(R.id.amongus);
+        AMONGUS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AMONGUS.setVisibility(View.GONE);
+            }
+        });
         for (SectionButton widget : sectionButtons){
             widget.button.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -199,13 +209,48 @@ public class MainActivity extends AppCompatActivity {
                     }
                     //the funny
                     combo.push(widget.id);
+                    //TextView TITLE = findViewById(R.id.TESTINGTITLE);
+                    //TITLE.setText(Arrays.toString(combo.list));
                     if (Arrays.equals(new String[]{"1", "2", "3", "1", "1", "2", "1", "3", "1", "1"},combo.list)){
                         findViewById(R.id.cat).setVisibility(View.VISIBLE);
                     }
+                    if (Arrays.equals(new String[]{"1", "3", "3", "3", "2", "2", "1", "3", "2", "2"},combo.list)){
+                        findViewById(R.id.dataLayout).setVisibility(View.GONE);
+                        findViewById(R.id.cookie).setVisibility(View.VISIBLE);
+                    }
+                    if (new Random().nextInt(100) < 3) AMONGUS.setVisibility(View.VISIBLE);
                 }
             });
 
         }
+        ImageView FNAF = findViewById(R.id.fnaf);
+        TeamName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (String.valueOf(TeamName.getText()).equals("1987")) {
+                    FNAF.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+
+        FNAF.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FNAF.setVisibility(View.GONE);
+            }
+        });
+
         findViewById(R.id.cat).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -231,8 +276,43 @@ public class MainActivity extends AppCompatActivity {
                 findViewById(R.id.mapLayout).setVisibility(View.GONE);
             }
         });
+        findViewById(R.id.leavecookie).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                findViewById(R.id.dataLayout).setVisibility(View.VISIBLE);
+                findViewById(R.id.mapLayout).setVisibility(View.GONE);
+                findViewById(R.id.cookie).setVisibility(View.GONE); //REMOVE LATER
+            }
+        });
+        //rotate cookie
+        RotateAnimation rotateRight = new RotateAnimation(0, 70,
+                Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
+                0.5f);
 
 
+        ImageView cookievike = findViewById(R.id.cookievike);
+        TextView cookieText = findViewById(R.id.cookiesText);
+
+        cookievike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RotateAnimation rotate = new RotateAnimation(0, new Random().nextInt(360),
+                        Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
+                        0.5f);
+                rotate.setDuration(100);
+                cookievike.setAnimation(rotate);
+
+                cookievike.setVisibility(View.GONE);
+                cookievike.setVisibility(View.VISIBLE);
+
+                cookies++;
+                cookieText.setText("COOKIES: " + cookies);
+                if (cookies % 10 == 0){
+                    cookievike.setScaleX((float) (cookievike.getScaleX()*1.02));
+                    cookievike.setScaleY((float) (cookievike.getScaleY()*1.02));
+                }
+            }
+        });
         generateQRCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -264,14 +344,11 @@ public class MainActivity extends AppCompatActivity {
                     textMap.add(new String[]{String.valueOf(widget.name),String.valueOf(widget.value)});
                 }
                 textMap.add(new String[]{"Auto: Left Starting Area", String.valueOf(AutoLeftStartingArea.isChecked())});
-                textMap.add(new String[]{"Auto: Completed Climb", String.valueOf(AutoCompletedClimb.isChecked())});
-                textMap.add(new String[]{"Auto: Completed Trap", String.valueOf(AutoCompletedTrap.isChecked())});
 
                 //teleop
                 for (AdditionButton widget : teleopAdditionButtons){
                     textMap.add(new String[]{String.valueOf(widget.name),String.valueOf(widget.value)});
                 }
-                textMap.add(new String[]{"Teleop: Left Starting Area", String.valueOf(LeftArea.isChecked())});
                 textMap.add(new String[]{"Teleop: Completed Climb", String.valueOf(CompletedClimb.isChecked())});
                 textMap.add(new String[]{"Teleop: Completed Trap", String.valueOf(CompletedTrap.isChecked())});
                 textMap.add(new String[]{"Teleop: Broke Down but Restarted", String.valueOf(BrokeDownRestarted.isChecked())});
