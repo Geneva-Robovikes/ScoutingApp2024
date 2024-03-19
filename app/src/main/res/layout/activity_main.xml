@@ -47,12 +47,18 @@
                 android:text="Robovikes #3067 - Scouting App"
                 android:textColor="@color/white"
                 android:textSize="36sp" />
-
             <Space
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_weight="1">
             </Space>
+            <Button
+                android:id="@+id/resetButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reset"
+                android:textColor="@color/white">
+            </Button>
             <ImageButton
                 android:id="@+id/mapButtonToMap"
                 android:layout_width="wrap_content"
@@ -162,17 +168,29 @@
                 </RadioGroup>
             </LinearLayout>
             <Button
-                android:id="@+id/generateQRCODE"
+                android:id="@+id/generateQRCODE_match"
                 android:layout_width="200dp"
                 android:layout_height="100dp"
                 android:layout_margin="32dp"
-                android:text="@string/generate_qr_code"
+                android:text="Generate Match Data"
                 android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.5">
             </Button>
+            <Button
+                android:id="@+id/generateQRCODE_pit"
+                android:layout_width="200dp"
+                android:layout_height="100dp"
+                android:text="Generate Pit Data"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.5">
+            </Button>
+
         </LinearLayout>
         <LinearLayout
             android:layout_width="@dimen/_300sdp"

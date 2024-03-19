@@ -65,29 +65,19 @@ public class MainActivity extends AppCompatActivity {
     //Standard deviation of points
     String teamName;
     String appView = "main";
-    int shotsAttempted = 0;
-    int shotsMade = 0;
-    boolean auto_canLeaveStartingZone = false;
-    boolean auto_canShootNoteintoSpeaker = false;
-    boolean auto_canShootintoAmp = false;
-    int speakerScore = 0;
-    int ampScore = 0;
-    boolean onStage = false;
-    boolean scoreTrap = false;
+
     int cookies = 0;
-    boolean spotlight = false;
-    int autoSpeakerScore = 0;
-    int autoAmpScore = 0;
-    boolean cat = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         //declaring edit texts
-        Button generateQRCode = (Button)findViewById(R.id.generateQRCODE);
+        Button generateQRCode_pit = (Button)findViewById(R.id.generateQRCODE_pit);
+        Button generateQRCode_match = (Button)findViewById(R.id.generateQRCODE_match);
         EditText TeamName = (EditText)findViewById(R.id.editTeamName);
         //qr code
-        ImageView QRCode = (ImageView) findViewById(R.id.QRCODE);
+        ImageView QRCodeImage = (ImageView) findViewById(R.id.QRCODE);
         Queue combo = new Queue();
 
         EditText RobotHeight = findViewById(R.id.robotHeight);
@@ -132,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
         //teleop
         AdditionButton AmpsScored = new AdditionButton(findViewById(R.id.AmpsScoredPlus),findViewById(R.id.AmpsScoredMinus),findViewById(R.id.AmpsScored),"Teleop: Notes in Amp Scored");
         AdditionButton SpeakersScored = new AdditionButton(findViewById(R.id.SpeakerScoredPlus),findViewById(R.id.SpeakerScoredMinus),findViewById(R.id.SpeakerScored),"Teleop: Notes in Speaker Scored");
-        AdditionButton ShotsMissed = new AdditionButton(findViewById(R.id.ShotsMissedPlus),findViewById(R.id.ShotsMissedMinus),findViewById(R.id.ShotsMissed),"Teleop: Shots Attempted");
+        AdditionButton ShotsMissed = new AdditionButton(findViewById(R.id.ShotsMissedPlus),findViewById(R.id.ShotsMissedMinus),findViewById(R.id.ShotsMissed),"Teleop: Shots Missed");
 
 
         CheckBox CompletedClimb = findViewById(R.id.Climb);
@@ -165,27 +155,6 @@ public class MainActivity extends AppCompatActivity {
         SectionButton AutoSectionButton = new SectionButton(findViewById(R.id.toAutoButton),findViewById(R.id.autoData), new ScrollView[]{findViewById(R.id.pitData), findViewById(R.id.teleopData)},"2");
         SectionButton TeleopSection = new SectionButton(findViewById(R.id.toTeleopButton),findViewById(R.id.teleopData), new ScrollView[]{findViewById(R.id.pitData), findViewById(R.id.autoData)},"3");
 
-        //Note buttons
-        NoteButton Mid1 = new NoteButton(findViewById(R.id.Mid1),"Mid 1");
-        NoteButton Mid2 = new NoteButton(findViewById(R.id.Mid2),"Mid 2");
-        NoteButton Mid3 = new NoteButton(findViewById(R.id.Mid3),"Mid 3");
-        NoteButton Mid4 = new NoteButton(findViewById(R.id.Mid4),"Mid 4");
-        NoteButton Mid5 = new NoteButton(findViewById(R.id.Mid5),"Mid 5");
-
-        NoteButton Right1 = new NoteButton(findViewById(R.id.Right1),"Right 1");
-        NoteButton Right2 = new NoteButton(findViewById(R.id.Right2),"Right 2");
-        NoteButton Right3 = new NoteButton(findViewById(R.id.Right3),"Right 3");
-
-        NoteButton[] noteButtons = {Mid1, Mid2, Mid3, Mid4, Mid5, Right1, Right2, Right3};
-
-        for (NoteButton note : noteButtons){
-            note.button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    note.changeState();
-                }
-            });
-        }
 
         SectionButton[] sectionButtons = {PitSectionButton,AutoSectionButton,TeleopSection};
         GifImageView AMONGUS = findViewById(R.id.amongus);
@@ -313,20 +282,12 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        generateQRCode.setOnClickListener(new View.OnClickListener() {
+        //QR code buttons
+        generateQRCode_pit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //on button press generate json code and show QR code as image
-                //this is a mess and im sorry
                 ArrayList<String[]> textMap = new ArrayList<String[]>();
-                String csvFile = "";
-
                 textMap.add(new String[]{"Team Name",String.valueOf(TeamName.getText())});
-                textMap.add(new String[]{"Match #",String.valueOf(matchNumber.getText())});
-                if (teamBlue.isChecked()) textMap.add(new String[]{"Team","Blue"});
-                else textMap.add(new String[]{"Team","Red"});
-
-                //auto section
                 textMap.add(new String[]{"Robot Height",String.valueOf(RobotHeight.getText())});
                 textMap.add(new String[]{"Robot Width w/o bumper",String.valueOf(RobotWidth.getText())});
                 textMap.add(new String[]{"Robot Width w/ bumper",String.valueOf(RobotWidthBumper.getText())});
@@ -339,11 +300,23 @@ public class MainActivity extends AppCompatActivity {
                 textMap.add(new String[]{"Can score in amp",String.valueOf(CanAmp.isChecked())});
                 textMap.add(new String[]{"Can pick up notes from ground",String.valueOf(CanPickNotesGround.isChecked())});
                 textMap.add(new String[]{"Can pick up notes from loading",String.valueOf(CanPickNotesLoading.isChecked())});
+                QRCode.generateQRCode(textMap,QRCodeImage);
+            }
+        });
+        generateQRCode_match.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ArrayList<String[]> textMap = new ArrayList<String[]>();
+                textMap.add(new String[]{"Team Name",String.valueOf(TeamName.getText())});
+                textMap.add(new String[]{"Match #",String.valueOf(matchNumber.getText())});
+                if (teamBlue.isChecked()) textMap.add(new String[]{"Team","Blue"});
+                else textMap.add(new String[]{"Team","Red"});
+                textMap.add(new String[]{"Auto: Left Starting",String.valueOf(AutoLeftStartingArea.isChecked())});
+
                 //auto section
                 for (AdditionButton widget : autoAdditionButtons){
                     textMap.add(new String[]{String.valueOf(widget.name),String.valueOf(widget.value)});
                 }
-                textMap.add(new String[]{"Auto: Left Starting Area", String.valueOf(AutoLeftStartingArea.isChecked())});
 
                 //teleop
                 for (AdditionButton widget : teleopAdditionButtons){
@@ -353,39 +326,47 @@ public class MainActivity extends AppCompatActivity {
                 textMap.add(new String[]{"Teleop: Completed Trap", String.valueOf(CompletedTrap.isChecked())});
                 textMap.add(new String[]{"Teleop: Broke Down but Restarted", String.valueOf(BrokeDownRestarted.isChecked())});
                 textMap.add(new String[]{"Teleop: Broke Down not restarted", String.valueOf(BrokeDownFully.isChecked())});
-
-                //notes map
-                for (NoteButton noot: noteButtons){
-                    textMap.add(new String[]{String.valueOf(noot.name),String.valueOf(noot.state)});
-                }
-
-                QRCode.setVisibility(View.VISIBLE);
-                //turn arraylist to string
-
-                for (String[] row : textMap){
-                    for (int i = 0; i < row.length; i++){
-                        csvFile+=row[i];
-                        csvFile+=",";
-                    }
-                    csvFile += "\n";
-                }
-
-                MultiFormatWriter mWriter = new MultiFormatWriter();
-                try {
-                    //BitMatrix class to encode entered text and set Width & Height
-                    BitMatrix mMatrix = mWriter.encode(csvFile, BarcodeFormat.QR_CODE, 300, 300);
-                    BarcodeEncoder mEncoder = new BarcodeEncoder();
-                    Bitmap mBitmap = mEncoder.createBitmap(mMatrix);//creating bitmap of code
-                    QRCode.setImageBitmap(mBitmap);//Setting generated QR code to imageView
-                } catch (WriterException e) {
-                    e.printStackTrace();
-                }
+                QRCode.generateQRCode(textMap,QRCodeImage);
             }
         });
-        QRCode.setOnClickListener(new View.OnClickListener() {
+        QRCodeImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                QRCode.setVisibility(View.INVISIBLE);
+                QRCodeImage.setVisibility(View.INVISIBLE);
+            }
+        });
+        findViewById(R.id.resetButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TeamName.setText("");
+                matchNumber.setText("");
+                RobotHeight.setText("");
+                RobotWidth.setText("");
+                RobotWidthBumper.setText("");
+                RobotLength.setText("");
+                RobotLengthBumper.setText("");
+                CycleTime.setText("");
+                DriveType.setText("");
+                CanHangOnChain.setChecked(false);
+                CanSpeaker.setChecked(false);
+                CanAmp.setChecked(false);
+                CanPickNotesGround.setChecked(false);
+                CanPickNotesLoading.setChecked(false);
+                //auto
+                for (AdditionButton button : autoAdditionButtons){
+                    button.value=0;
+                    button.text.setText(String.valueOf(0));
+                }
+                AutoLeftStartingArea.setChecked(false);
+                //teleop
+                for (AdditionButton button : teleopAdditionButtons){
+                    button.value=0;
+                    button.text.setText(String.valueOf(0));
+                }
+                CompletedClimb.setChecked(false);
+                CompletedTrap.setChecked(false);
+                BrokeDownFully.setChecked(false);
+                BrokeDownRestarted.setChecked(false);
             }
         });
     }

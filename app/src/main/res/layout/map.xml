@@ -33,7 +33,8 @@
             <Space
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_weight="1"></Space>
+                android:layout_weight="1">
+            </Space>
 
             <ImageButton
                 android:id="@+id/mapButtonToMain"
@@ -55,130 +56,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5"
-        app:srcCompat="@drawable/frc2024map"></ImageView>
+        app:srcCompat="@drawable/frc2024map">
+    </ImageView>
 
-    <ImageButton
-        android:id="@+id/Mid1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="295dp"
-        android:background="@null"
-        android:src="@drawable/empty_circle_foreground"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5"
-        app:tint="#FF0000">
-    </ImageButton>
-    <ImageButton
-        android:id="@+id/Mid2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="105dp"
-        android:background="@null"
-        android:src="@drawable/empty_circle_foreground"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5"
-        app:tint="#FF0000">
-    </ImageButton>
-    <ImageButton
-        android:id="@+id/Mid3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="-85dp"
-        android:background="@null"
-        android:src="@drawable/empty_circle_foreground"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5"
-        app:tint="#FF0000">
-    </ImageButton>
-    <ImageButton
-        android:id="@+id/Mid4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="-280dp"
-        android:background="@null"
-        android:src="@drawable/empty_circle_foreground"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5"
-        app:tint="#FF0000">
-    </ImageButton>
-    <ImageButton
-        android:id="@+id/Mid5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="-470dp"
-        android:background="@null"
-        android:src="@drawable/empty_circle_foreground"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5"
-        app:tint="#FF0000">
-    </ImageButton>
-
-    <ImageButton
-        android:id="@+id/Right1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="610dp"
-        android:layout_marginBottom="245dp"
-        android:background="@null"
-        android:src="@drawable/empty_circle_foreground"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5"
-        app:tint="#FF0000">
-    </ImageButton>
-    <ImageButton
-        android:id="@+id/Right2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="610dp"
-        android:layout_marginBottom="80dp"
-        android:background="@null"
-        android:src="@drawable/empty_circle_foreground"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5"
-        app:tint="#FF0000">
-    </ImageButton>
-    <ImageButton
-        android:id="@+id/Right3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="610dp"
-        android:layout_marginBottom="-85dp"
-        android:background="@null"
-        android:src="@drawable/empty_circle_foreground"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5"
-        app:tint="#FF0000">
-    </ImageButton>
 </androidx.constraintlayout.widget.ConstraintLayout>
