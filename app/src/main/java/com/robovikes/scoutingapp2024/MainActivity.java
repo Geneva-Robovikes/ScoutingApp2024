@@ -38,6 +38,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Dictionary;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Random;
 
@@ -229,12 +230,13 @@ public class MainActivity extends AppCompatActivity {
         //map buttons
         ImageButton MapButtonToMap = (ImageButton) findViewById(R.id.mapButtonToMap);
         ImageButton MapButtonToMain = (ImageButton) findViewById(R.id.mapButtonToMain);
-
+        ImageButton ButtonToTeams = (ImageButton) findViewById(R.id.buttonToTeams);
         MapButtonToMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 findViewById(R.id.dataLayout).setVisibility(View.GONE);
                 findViewById(R.id.mapLayout).setVisibility(View.VISIBLE);
+                findViewById(R.id.teamsLayout).setVisibility(View.GONE);
             }
         });
 
@@ -243,6 +245,23 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 findViewById(R.id.dataLayout).setVisibility(View.VISIBLE);
                 findViewById(R.id.mapLayout).setVisibility(View.GONE);
+                findViewById(R.id.teamsLayout).setVisibility(View.GONE);
+            }
+        });
+        ButtonToTeams.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                findViewById(R.id.dataLayout).setVisibility(View.GONE);
+                findViewById(R.id.mapLayout).setVisibility(View.GONE);
+                findViewById(R.id.teamsLayout).setVisibility(View.VISIBLE);
+            }
+        });
+        findViewById(R.id.TeamsToMain).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                findViewById(R.id.dataLayout).setVisibility(View.VISIBLE);
+                findViewById(R.id.mapLayout).setVisibility(View.GONE);
+                findViewById(R.id.teamsLayout).setVisibility(View.GONE);
             }
         });
         findViewById(R.id.leavecookie).setOnClickListener(new View.OnClickListener() {
@@ -253,6 +272,16 @@ public class MainActivity extends AppCompatActivity {
                 findViewById(R.id.cookie).setVisibility(View.GONE); //REMOVE LATER
             }
         });
+        //team picking section
+        HashMap<Button,LinearLayout> teamMapHash = new HashMap<>();
+        teamMapHash.put(findViewById(R.id.teamsAmpButton),findViewById(R.id.teamsAmpView));
+        teamMapHash.put(findViewById(R.id.teamsSpeakerButton),findViewById(R.id.teamsSpeakerView));
+        teamMapHash.put(findViewById(R.id.teamsDefenseButton),findViewById(R.id.teamsDefenseView));
+        teamMapHash.put(findViewById(R.id.teamsConsistencyButton),findViewById(R.id.teamsConsistencyView));
+        teamMapHash.put(findViewById(R.id.teamsScoringButton),findViewById(R.id.teamsScoringView));
+        QRCode.createButtons(teamMapHash);
+
+
         //rotate cookie
         RotateAnimation rotateRight = new RotateAnimation(0, 70,
                 Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,

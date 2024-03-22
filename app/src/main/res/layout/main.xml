@@ -17,4 +17,9 @@
         android:id="@+id/cookie"
         android:visibility="gone">
     </include>
+    <include
+        layout="@layout/teams"
+        android:id="@+id/teamsLayout"
+        android:visibility="gone">
+    </include>
 </androidx.constraintlayout.widget.ConstraintLayout>
