@@ -279,7 +279,7 @@ public class MainActivity extends AppCompatActivity {
         teamMapHash.put(findViewById(R.id.teamsDefenseButton),findViewById(R.id.teamsDefenseView));
         teamMapHash.put(findViewById(R.id.teamsConsistencyButton),findViewById(R.id.teamsConsistencyView));
         teamMapHash.put(findViewById(R.id.teamsScoringButton),findViewById(R.id.teamsScoringView));
-        QRCode.createButtons(teamMapHash);
+        QRCode.createButtons(teamMapHash,this);
 
 
         //rotate cookie
