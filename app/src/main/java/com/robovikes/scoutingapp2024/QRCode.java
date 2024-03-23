@@ -38,7 +38,7 @@ public class QRCode {
         }
         QRCODE.setVisibility(View.VISIBLE);
     }
-    public static void createButtons(HashMap<Button,LinearLayout> headerButtons){
+    public static void createButtons(HashMap<Button,LinearLayout> headerButtons, MainActivity mainActivity){
         ArrayList<SectionObject> sectionArray = new ArrayList<>();
         for (Map.Entry<Button, LinearLayout> set : headerButtons.entrySet()){
             sectionArray.add(new SectionObject(set.getKey(),set.getValue()));

@@ -15,6 +15,6 @@ public class SectionObject {
 
         TextView test = new TextView(context);
         test.setText("hey there!");
-        this.layout.addView(test);
+        this.layout.addView(context);
     }
 }
