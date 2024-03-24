@@ -117,38 +117,37 @@
         </LinearLayout>
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/white">
-            <LinearLayout
+            android:layout_height="match_parent">
+            <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/teamsAmpView"
-                android:background="#FF0000">
-            </LinearLayout>
-            <LinearLayout
+                android:padding="16dp">
+            </ScrollView>
+            <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/teamsSpeakerView"
-                android:background="#FFFF00">
-            </LinearLayout>
-            <LinearLayout
+                android:padding="16dp">
+            </ScrollView>
+            <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/teamsDefenseView"
-                android:background="#00FF00">
-            </LinearLayout>
-            <LinearLayout
+                android:padding="16dp">
+            </ScrollView>
+            <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/teamsConsistencyView"
-                android:background="#0000FF">
-            </LinearLayout>
-            <LinearLayout
+                android:padding="16dp">
+            </ScrollView>
+            <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/teamsScoringView"
-                android:background="#FFFFFF">
-            </LinearLayout>
+                android:padding="16dp">
+            </ScrollView>
         </RelativeLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

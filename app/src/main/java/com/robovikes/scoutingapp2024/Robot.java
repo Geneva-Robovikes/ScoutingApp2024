@@ -11,8 +11,7 @@ public class Robot {
     *   -Support
      */
     //points designates points made in a match, score represents how a robot is valued in that field
-    public String robotName;
-    public int defenseScore;
+    public String teamName;
     public int cycleTime;
     public int[] ampPoints;
     public int[] speakerPoints;
@@ -20,8 +19,13 @@ public class Robot {
     //ranking points
     public double ampScore;
     public double speakerScore;
+    //not initialized, set to 0
+    public double consistencyScore = 0;
+    public double defenseScore = 0;
+    public double scoringScore = 0;
 
-    public Robot(int[] ampPoints, int[] speakerPoints){
+    public Robot(String teamName,int[] ampPoints, int[] speakerPoints){
+        this.teamName = teamName;
         this.ampPoints = ampPoints;
         this.speakerPoints = speakerPoints;
         ampScore = averageBest(ampPoints);
@@ -61,5 +65,14 @@ public class Robot {
             }
         }
         return returnedArray;
+    }
+    //@parameters 1=ampScore,2=speakerScore,3=defenseScore,4=consistencyScore,5=scoringScore
+    public double compare(Robot other, int comparison){
+        if (comparison == 1) return (this.ampScore-other.ampScore);
+        if (comparison == 2) return (this.speakerScore-other.speakerScore);
+        if (comparison == 3) return (this.defenseScore-other.defenseScore);
+        if (comparison == 4) return (this.consistencyScore-other.consistencyScore);
+        if (comparison == 5) return (this.scoringScore-other.scoringScore);
+        return -1;
     }
 }

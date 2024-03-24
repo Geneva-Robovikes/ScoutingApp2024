@@ -1,10 +1,12 @@
 package com.robovikes.scoutingapp2024;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
@@ -38,10 +40,12 @@ public class QRCode {
         }
         QRCODE.setVisibility(View.VISIBLE);
     }
-    public static void createButtons(HashMap<Button,LinearLayout> headerButtons){
+    //REMOVE LATER
+    /*
+    public static void createButtons(HashMap<Button, ScrollView> headerButtons, Context context, ArrayList<Robot> robotArray){
         ArrayList<SectionObject> sectionArray = new ArrayList<>();
-        for (Map.Entry<Button, LinearLayout> set : headerButtons.entrySet()){
-            sectionArray.add(new SectionObject(set.getKey(),set.getValue()));
+        for (Map.Entry<Button, ScrollView> set : headerButtons.entrySet()){
+            sectionArray.add(new SectionObject(set.getKey(),set.getValue(),context,robotArray));
         }
         for (SectionObject element : sectionArray){
             element.sectionButton.setOnClickListener(new View.OnClickListener() {
@@ -51,6 +55,26 @@ public class QRCode {
                     element.layout.setVisibility(View.VISIBLE);
                 }
             });
+            element.layout.setVisibility(View.GONE);
         }
+        sectionArray.get(0).layout.setVisibility(View.VISIBLE);
+    }
+     */
+    //@parameters 1=ampScore,2=speakerScore,3=defenseScore,4=consistencyScore,5=scoringScore
+
+    public static ArrayList<Robot> sortByValue(ArrayList<Robot> robotsArray,int comparison){
+        ArrayList<Robot> returnedArray = new ArrayList<>(robotsArray);
+        int n = returnedArray.size();
+        for (int i = 0; i < n - 1; i++){
+            for (int j = 0; j < n -1;j++){
+                double compareValue = returnedArray.get(j).compare(returnedArray.get(j+1),comparison);
+                if (compareValue<0){
+                    Robot temp = returnedArray.get(j);
+                    returnedArray.set(j,returnedArray.get(j+1));
+                    returnedArray.set(j+1,temp);
+                }
+            }
+        }
+        return returnedArray;
     }
 }

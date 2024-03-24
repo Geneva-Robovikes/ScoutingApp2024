@@ -1,6 +1,7 @@
 package com.robovikes.scoutingapp2024;
 
 import android.content.DialogInterface;
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.icu.text.CaseMap;
@@ -10,6 +11,7 @@ import android.provider.ContactsContract;
 import android.text.Editable;
 import android.text.Layout;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
@@ -34,6 +36,10 @@ import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 import org.w3c.dom.Text;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Dictionary;
@@ -41,6 +47,7 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Random;
+import java.util.Scanner;
 
 import pl.droidsonroids.gif.GifImageView;
 
@@ -272,15 +279,76 @@ public class MainActivity extends AppCompatActivity {
                 findViewById(R.id.cookie).setVisibility(View.GONE); //REMOVE LATER
             }
         });
-        //team picking section
-        HashMap<Button,LinearLayout> teamMapHash = new HashMap<>();
-        teamMapHash.put(findViewById(R.id.teamsAmpButton),findViewById(R.id.teamsAmpView));
-        teamMapHash.put(findViewById(R.id.teamsSpeakerButton),findViewById(R.id.teamsSpeakerView));
-        teamMapHash.put(findViewById(R.id.teamsDefenseButton),findViewById(R.id.teamsDefenseView));
-        teamMapHash.put(findViewById(R.id.teamsConsistencyButton),findViewById(R.id.teamsConsistencyView));
-        teamMapHash.put(findViewById(R.id.teamsScoringButton),findViewById(R.id.teamsScoringView));
-        QRCode.createButtons(teamMapHash,this);
+        //extract data for robots
+        ArrayList<Robot> robotArray = new ArrayList<>();
+        try {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(getAssets().open("ASRobots.txt")));
+            String mLine;
 
+            while ((mLine = reader.readLine()) != null) {
+                String teamName = mLine.substring(10,mLine.indexOf(",Speaker Scores,"));
+                String speakerScoresString = mLine.substring(mLine.indexOf("Speaker Scores,[")+"Speaker Scores,[".length(),mLine.indexOf(",Amp Scores")-1);
+                String ampScoresString = mLine.substring(mLine.indexOf("Amp Scores,[")+"Amp Scores,[".length(),mLine.length()-1);
+
+
+                Log.i("Team Info",teamName);
+                Log.i("Team Info",speakerScoresString);
+                Log.i("Team Info",ampScoresString);
+
+                //turn strings into arrays
+                String[] speakerStringArray = speakerScoresString.split(", ");
+                int[] speakerArray = new int[speakerStringArray.length];
+                for (int i = 0; i < speakerStringArray.length;i++){
+                    speakerArray[i] = Integer.parseInt(speakerStringArray[i]);
+                }
+
+                String[] ampStringArray = ampScoresString.split(", ");
+                int[] ampArray = new int[ampStringArray.length];
+                for (int i = 0; i < ampStringArray.length;i++){
+                    ampArray[i] = Integer.parseInt(ampStringArray[i]);
+                }
+                robotArray.add(new Robot(teamName,ampArray,speakerArray));
+            }
+            /*
+            while (text.indexOf("Team Name,") != -1) {
+                ArrayList<Integer> speakerScores = new ArrayList<>();
+                ArrayList<Integer> ampScores = new ArrayList<>();
+            }
+             */
+            reader.close();
+        } catch(IOException e){
+            e.printStackTrace();
+        }
+
+        //team picking section
+        HashMap<Button,ScrollView> teamMapHash = new HashMap<>();
+        ArrayList<SectionObject> sectionObjectArrayList = new ArrayList<>();
+
+        //@parameters 1=ampScore,2=speakerScore,3=defenseScore,4=consistencyScore,5=scoringScore
+        QRCode.sortByValue(robotArray,1);
+        sectionObjectArrayList.add(new SectionObject(findViewById(R.id.teamsAmpButton),findViewById(R.id.teamsAmpView),this,QRCode.sortByValue(robotArray,1),1));
+        sectionObjectArrayList.add(new SectionObject(findViewById(R.id.teamsSpeakerButton),findViewById(R.id.teamsSpeakerView),this,QRCode.sortByValue(robotArray,2),2));
+        sectionObjectArrayList.add(new SectionObject(findViewById(R.id.teamsDefenseButton),findViewById(R.id.teamsDefenseView),this,QRCode.sortByValue(robotArray,3),3));
+        sectionObjectArrayList.add(new SectionObject(findViewById(R.id.teamsConsistencyButton),findViewById(R.id.teamsConsistencyView),this,QRCode.sortByValue(robotArray,4),4));
+        sectionObjectArrayList.add(new SectionObject(findViewById(R.id.teamsScoringButton),findViewById(R.id.teamsScoringView),this,QRCode.sortByValue(robotArray,5),5));
+
+        //teamMapHash.put(findViewById(R.id.teamsAmpButton),findViewById(R.id.teamsAmpView));
+        //teamMapHash.put(findViewById(R.id.teamsSpeakerButton),findViewById(R.id.teamsSpeakerView));
+        //teamMapHash.put(findViewById(R.id.teamsDefenseButton),findViewById(R.id.teamsDefenseView));
+        //teamMapHash.put(findViewById(R.id.teamsConsistencyButton),findViewById(R.id.teamsConsistencyView));
+        //teamMapHash.put(findViewById(R.id.teamsScoringButton),findViewById(R.id.teamsScoringView));
+        //QRCode.createButtons(teamMapHash,this,robotArray);
+        for (SectionObject element : sectionObjectArrayList){
+            element.sectionButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    for (SectionObject EME: sectionObjectArrayList) EME.layout.setVisibility(View.GONE);
+                    element.layout.setVisibility(View.VISIBLE);
+                }
+            });
+            element.layout.setVisibility(View.GONE);
+        }
+        sectionObjectArrayList.get(0).layout.setVisibility(View.VISIBLE);
 
         //rotate cookie
         RotateAnimation rotateRight = new RotateAnimation(0, 70,
