@@ -45,7 +45,7 @@
                 android:id="@+id/TESTINGTITLE"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Robovikes #3067 - Scouting App"
+                android:text="@string/robovikes_3067_scouting_app"
                 android:textColor="@color/white"
                 android:textSize="36sp" />
             <Space
@@ -57,7 +57,7 @@
                 android:id="@+id/resetButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Reset"
+                android:text="@string/reset"
                 android:layout_margin="2dp"
                 android:textColor="@color/white">
             </Button>
@@ -74,7 +74,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:src="@drawable/map_foreground">
+                android:src="@drawable/map_foreground"
+                android:contentDescription="@string/tomap">
             </ImageButton>
         </LinearLayout>
     </RelativeLayout>
@@ -181,7 +182,7 @@
                 android:id="@+id/generateQRCODE_match"
                 android:layout_width="200dp"
                 android:layout_height="100dp"
-                android:text="Generate Match Data"
+                android:text="@string/generate_match_data"
                 android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -192,7 +193,7 @@
                 android:id="@+id/generateQRCODE_pit"
                 android:layout_width="200dp"
                 android:layout_height="100dp"
-                android:text="Generate Pit Data"
+                android:text="@string/generate_pit_data"
                 android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -221,37 +222,37 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#F5F0F6"
-                    android:text="Pit"
+                    android:text="@string/pit"
                     android:textColor="@color/white"
-                    android:textSize="24sp"></Button>
+                    android:textSize="24sp" />
 
                 <Space
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"></Space>
+                    android:layout_weight="1" />
 
                 <Button
                     android:id="@+id/toAutoButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#99810E44"
-                    android:text="Auto"
+                    android:text="@string/auto"
                     android:textColor="@color/white"
-                    android:textSize="24sp"></Button>
+                    android:textSize="24sp" />
 
                 <Space
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"></Space>
+                    android:layout_weight="1" />
 
                 <Button
                     android:id="@+id/toTeleopButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#2B2D42"
-                    android:text="Teleop"
+                    android:text="@string/teleop"
                     android:textColor="@color/white"
-                    android:textSize="24sp"></Button>
+                    android:textSize="24sp" />
             </LinearLayout>
 
             <ScrollView
@@ -265,57 +266,30 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="#33F5F0F6">
-
                     <TableRow>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Robot Height (in)"
+                            android:text="@string/robot_width_w_o_bumper_in"
                             android:textColor="@color/white"
-                            android:textSize="24sp"></TextView>
+                            android:textSize="24sp" />
 
                         <Space
                             android:layout_width="300dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"></Space>
-
-                        <EditText
-                            android:id="@+id/robotHeight"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="32dp"
-                            android:hint="Enter"
-                            android:inputType="numberDecimal"
-                            android:textAlignment="center"
-                            android:textColorHint="@color/white"
-                            android:textSize="20sp"></EditText>
-                    </TableRow>
-
-                    <TableRow>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Robot Width w/o Bumper (in)"
-                            android:textColor="@color/white"
-                            android:textSize="24sp"></TextView>
-
-                        <Space
-                            android:layout_width="300dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"></Space>
+                            android:layout_weight="1" />
 
                         <EditText
                             android:id="@+id/robotWidth"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="32dp"
-                            android:hint="Enter"
+                            android:layout_marginEnd="32dp"
+                            android:hint="@string/enter"
                             android:inputType="numberDecimal"
                             android:textAlignment="center"
                             android:textColorHint="@color/white"
-                            android:textSize="20sp"></EditText>
+                            android:textSize="20sp" />
                     </TableRow>
 
                     <TableRow>
@@ -323,25 +297,26 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Robot Width w/ Bumper (in)"
+                            android:text="@string/robot_width_w_bumper_in"
                             android:textColor="@color/white"
-                            android:textSize="24sp"></TextView>
+                            android:textSize="24sp" />
 
                         <Space
                             android:layout_width="300dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"></Space>
+                            android:layout_weight="1">
+                        </Space>
 
                         <EditText
                             android:id="@+id/robotWidthBumper"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="32dp"
-                            android:hint="Enter"
+                            android:hint="@string/enter"
                             android:inputType="numberDecimal"
                             android:textAlignment="center"
                             android:textColorHint="@color/white"
-                            android:textSize="20sp"></EditText>
+                            android:textSize="20sp" />
                     </TableRow>
 
                     <TableRow>
@@ -349,25 +324,25 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Robot Length w/o Bumper (in)"
+                            android:text="@string/robot_length_w_o_bumper_in"
                             android:textColor="@color/white"
-                            android:textSize="24sp"></TextView>
+                            android:textSize="24sp" />
 
                         <Space
                             android:layout_width="300dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"></Space>
+                            android:layout_weight="1" />
 
                         <EditText
                             android:id="@+id/robotLength"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="32dp"
-                            android:hint="Enter"
+                            android:layout_marginEnd="32dp"
+                            android:hint="@string/enter"
                             android:inputType="numberDecimal"
                             android:textAlignment="center"
                             android:textColorHint="@color/white"
-                            android:textSize="20sp"></EditText>
+                            android:textSize="20sp" />
                     </TableRow>
 
                     <TableRow>
@@ -375,25 +350,25 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Robot Length w/ Bumper (in)"
+                            android:text="@string/robot_length_w_bumper_in"
                             android:textColor="@color/white"
-                            android:textSize="24sp"></TextView>
+                            android:textSize="24sp" />
 
                         <Space
                             android:layout_width="300dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"></Space>
+                            android:layout_weight="1" />
 
                         <EditText
                             android:id="@+id/robotLengthBumper"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="32dp"
-                            android:hint="Enter"
+                            android:layout_marginEnd="32dp"
+                            android:hint="@string/enter"
                             android:inputType="numberDecimal"
                             android:textAlignment="center"
                             android:textColorHint="@color/white"
-                            android:textSize="20sp"></EditText>
+                            android:textSize="20sp" />
                     </TableRow>
 
                     <TableRow>
@@ -401,25 +376,25 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Cycle Time (s)"
+                            android:text="@string/cycle_time_s"
                             android:textColor="@color/white"
-                            android:textSize="24sp"></TextView>
+                            android:textSize="24sp" />
 
                         <Space
                             android:layout_width="300dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"></Space>
+                            android:layout_weight="1" />
 
                         <EditText
                             android:id="@+id/cycleTime"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="32dp"
-                            android:hint="Enter"
+                            android:layout_marginEnd="32dp"
+                            android:hint="@string/enter"
                             android:inputType="numberDecimal"
                             android:textAlignment="center"
                             android:textColorHint="@color/white"
-                            android:textSize="20sp"></EditText>
+                            android:textSize="20sp" />
                     </TableRow>
 
                     <TableRow>
@@ -427,25 +402,25 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Drive Type"
+                            android:text="@string/drive_type"
                             android:textColor="@color/white"
-                            android:textSize="24sp"></TextView>
+                            android:textSize="24sp" />
 
                         <Space
                             android:layout_width="300dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"></Space>
+                            android:layout_weight="1" />
 
                         <EditText
                             android:id="@+id/driveType"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="32dp"
-                            android:hint="Enter"
+                            android:layout_marginEnd="32dp"
+                            android:hint="@string/enter"
                             android:inputType="text"
                             android:textAlignment="center"
                             android:textColorHint="@color/white"
-                            android:textSize="20sp"></EditText>
+                            android:textSize="20sp" />
                     </TableRow>
 
                     <TableRow>
@@ -453,19 +428,19 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Can hang on chain"
+                            android:text="@string/can_hang_on_chain"
                             android:textColor="@color/white"
-                            android:textSize="24sp"></TextView>
+                            android:textSize="24sp" />
 
                         <Space
                             android:layout_width="300dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"></Space>
+                            android:layout_weight="1" />
 
                         <CheckBox
                             android:id="@+id/pitChain"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"></CheckBox>
+                            android:layout_height="wrap_content" />
                     </TableRow>
 
                     <TableRow>
@@ -473,19 +448,19 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Can score in speaker"
+                            android:text="@string/can_score_in_speaker"
                             android:textColor="@color/white"
-                            android:textSize="24sp"></TextView>
+                            android:textSize="24sp" />
 
                         <Space
                             android:layout_width="300dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"></Space>
+                            android:layout_weight="1" />
 
                         <CheckBox
                             android:id="@+id/pitSpeaker"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"></CheckBox>
+                            android:layout_height="wrap_content" />
                     </TableRow>
 
                     <TableRow>
@@ -493,19 +468,17 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Can score in amp"
+                            android:text="@string/can_score_in_amp"
                             android:textColor="@color/white"
-                            android:textSize="24sp"></TextView>
-
+                            android:textSize="24sp" />
                         <Space
                             android:layout_width="300dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"></Space>
-
+                            android:layout_weight="1" />
                         <CheckBox
                             android:id="@+id/pitAmp"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"></CheckBox>
+                            android:layout_height="wrap_content" />
                     </TableRow>
 
                     <TableRow>
@@ -513,19 +486,19 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Can pick up notes from ground"
+                            android:text="@string/can_pick_up_notes_from_ground"
                             android:textColor="@color/white"
-                            android:textSize="24sp"></TextView>
+                            android:textSize="24sp" />
 
                         <Space
                             android:layout_width="300dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"></Space>
+                            android:layout_weight="1" />
 
                         <CheckBox
                             android:id="@+id/pitGroundNotes"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"></CheckBox>
+                            android:layout_height="wrap_content" />
                     </TableRow>
 
                     <TableRow>
@@ -533,19 +506,19 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Can pick up notes from loading"
+                            android:text="@string/can_pick_up_notes_from_loading"
                             android:textColor="@color/white"
-                            android:textSize="24sp"></TextView>
+                            android:textSize="24sp" />
 
                         <Space
                             android:layout_width="300dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"></Space>
+                            android:layout_weight="1" />
 
                         <CheckBox
                             android:id="@+id/pitLoadingNotes"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"></CheckBox>
+                            android:layout_height="wrap_content" />
                     </TableRow>
                 </TableLayout>
             </ScrollView>
@@ -567,14 +540,14 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Notes in Amp Scored"
+                            android:text="@string/notes_in_amp_scored"
                             android:textColor="@color/white"
-                            android:textSize="24sp"></TextView>
+                            android:textSize="24sp" />
 
                         <Space
                             android:layout_width="500dp"
                             android:layout_height="0dp"
-                            android:layout_weight="1"></Space>
+                            android:layout_weight="1" />
 
                         <Button
                             android:id="@+id/autoAmpsScoredMinus"
@@ -582,9 +555,9 @@
                             android:layout_height="wrap_content"
                             android:scaleX="0.8"
                             android:scaleY="0.8"
-                            android:text="-"
+                            android:text="@string/minus"
                             android:textColor="@color/white"
-                            android:textSize="24sp"></Button>
+                            android:textSize="24sp" />
 
                         <TextView
                             android:id="@+id/autoAmpsScored"
@@ -593,7 +566,7 @@
                             android:layout_marginHorizontal="16dp"
                             android:text="0"
                             android:textColor="@color/white"
-                            android:textSize="24sp"></TextView>
+                            android:textSize="24sp" />
 
                         <Button
                             android:id="@+id/autoAmpsScoredPlus"
@@ -601,9 +574,9 @@
                             android:layout_height="wrap_content"
                             android:scaleX="0.8"
                             android:scaleY="0.8"
-                            android:text="+"
+                            android:text="@string/plus"
                             android:textColor="@color/white"
-                            android:textSize="24sp"></Button>
+                            android:textSize="24sp"/>
                     </TableRow>
 
                     <TableRow>
@@ -613,12 +586,12 @@
                             android:layout_height="wrap_content"
                             android:text="Notes in Speaker Scored"
                             android:textColor="@color/white"
-                            android:textSize="24sp"></TextView>
+                            android:textSize="24sp" />
 
                         <Space
                             android:layout_width="500dp"
                             android:layout_height="0dp"
-                            android:layout_weight="1"></Space>
+                            android:layout_weight="1" />
 
                         <Button
                             android:id="@+id/autoSpeakerScoredMinus"
@@ -626,7 +599,7 @@
                             android:layout_height="wrap_content"
                             android:scaleX="0.8"
                             android:scaleY="0.8"
-                            android:text="-"
+                            android:text="@string/minus"
                             android:textColor="@color/white"
                             android:textSize="24sp"></Button>
 
@@ -645,7 +618,7 @@
                             android:layout_height="wrap_content"
                             android:scaleX="0.8"
                             android:scaleY="0.8"
-                            android:text="+"
+                            android:text="@string/plus"
                             android:textColor="@color/white"
                             android:textSize="24sp"></Button>
                     </TableRow>
@@ -704,7 +677,7 @@
                             android:layout_height="wrap_content"
                             android:scaleX="0.8"
                             android:scaleY="0.8"
-                            android:text="-"
+                            android:text="@string/minus"
                             android:textColor="@color/white"
                             android:textSize="24sp"></Button>
 
@@ -723,7 +696,7 @@
                             android:layout_height="wrap_content"
                             android:scaleX="0.8"
                             android:scaleY="0.8"
-                            android:text="+"
+                            android:text="@string/plus"
                             android:textColor="@color/white"
                             android:textSize="24sp"></Button>
                     </TableRow>
@@ -748,7 +721,7 @@
                             android:layout_height="wrap_content"
                             android:scaleX="0.8"
                             android:scaleY="0.8"
-                            android:text="-"
+                            android:text="@string/minus"
                             android:textColor="@color/white"
                             android:textSize="24sp"></Button>
 
@@ -767,7 +740,7 @@
                             android:layout_height="wrap_content"
                             android:scaleX="0.8"
                             android:scaleY="0.8"
-                            android:text="+"
+                            android:text="@string/plus"
                             android:textColor="@color/white"
                             android:textSize="24sp"></Button>
                     </TableRow>
@@ -792,7 +765,7 @@
                             android:layout_height="wrap_content"
                             android:scaleX="0.8"
                             android:scaleY="0.8"
-                            android:text="-"
+                            android:text="@string/minus"
                             android:textColor="@color/white"
                             android:textSize="24sp"></Button>
 
@@ -811,13 +784,54 @@
                             android:layout_height="wrap_content"
                             android:scaleX="0.8"
                             android:scaleY="0.8"
-                            android:text="+"
+                            android:text="@string/plus"
                             android:textColor="@color/white"
                             android:textSize="24sp"></Button>
                     </TableRow>
-
                     <TableRow>
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Feeder Shots"
+                            android:textColor="@color/white"
+                            android:textSize="24sp"></TextView>
+
+                        <Space
+                            android:layout_width="500dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"></Space>
+
+                        <Button
+                            android:id="@+id/FeederShotsMinus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:scaleX="0.8"
+                            android:scaleY="0.8"
+                            android:text="@string/minus"
+                            android:textColor="@color/white"
+                            android:textSize="24sp"></Button>
+
+                        <TextView
+                            android:id="@+id/FeederShotsView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="16dp"
+                            android:text="0"
+                            android:textColor="@color/white"
+                            android:textSize="24sp"></TextView>
+
+                        <Button
+                            android:id="@+id/FeederShotsPlus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:scaleX="0.8"
+                            android:scaleY="0.8"
+                            android:text="@string/plus"
+                            android:textColor="@color/white"
+                            android:textSize="24sp"></Button>
+                    </TableRow>
+                    <TableRow>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -894,6 +908,26 @@
                             android:id="@+id/BrokeDownRestarted"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"></CheckBox>
+                    </TableRow>
+                    <TableRow
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Defense Score (1-10)"
+                            android:textColor="@color/white"
+                            android:textSize="24sp">
+                        </TextView>
+                        <EditText
+                            android:id="@+id/DefenseScore"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/enter"
+                            android:textColor="@color/white"
+                            android:textSize="24sp"
+                            android:inputType="number">
+                        </EditText>
                     </TableRow>
                 </TableLayout>
             </ScrollView>

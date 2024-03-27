@@ -88,7 +88,6 @@ public class MainActivity extends AppCompatActivity {
         ImageView QRCodeImage = (ImageView) findViewById(R.id.QRCODE);
         Queue combo = new Queue();
 
-        EditText RobotHeight = findViewById(R.id.robotHeight);
         EditText RobotWidth = findViewById(R.id.robotWidth);
         EditText RobotWidthBumper = findViewById(R.id.robotWidthBumper);
         EditText RobotLength = findViewById(R.id.robotLength);
@@ -131,13 +130,14 @@ public class MainActivity extends AppCompatActivity {
         AdditionButton AmpsScored = new AdditionButton(findViewById(R.id.AmpsScoredPlus),findViewById(R.id.AmpsScoredMinus),findViewById(R.id.AmpsScored),"Teleop: Notes in Amp Scored");
         AdditionButton SpeakersScored = new AdditionButton(findViewById(R.id.SpeakerScoredPlus),findViewById(R.id.SpeakerScoredMinus),findViewById(R.id.SpeakerScored),"Teleop: Notes in Speaker Scored");
         AdditionButton ShotsMissed = new AdditionButton(findViewById(R.id.ShotsMissedPlus),findViewById(R.id.ShotsMissedMinus),findViewById(R.id.ShotsMissed),"Teleop: Shots Missed");
+        AdditionButton FeederShots = new AdditionButton(findViewById(R.id.FeederShotsPlus),findViewById(R.id.FeederShotsMinus),findViewById(R.id.FeederShotsView),"Teleop: Feeder Shots");
 
 
         CheckBox CompletedClimb = findViewById(R.id.Climb);
         CheckBox CompletedTrap = findViewById(R.id.Trap);
         CheckBox BrokeDownFully = findViewById(R.id.BrokeDownFully);
         CheckBox BrokeDownRestarted = findViewById(R.id.BrokeDownRestarted);
-        AdditionButton[] teleopAdditionButtons = {AmpsScored,SpeakersScored,ShotsMissed};
+        AdditionButton[] teleopAdditionButtons = {AmpsScored,SpeakersScored,ShotsMissed,FeederShots};
 
         EditText matchNumber = findViewById(R.id.matchnumber);
         for (AdditionButton widget : teleopAdditionButtons){
@@ -288,12 +288,10 @@ public class MainActivity extends AppCompatActivity {
             while ((mLine = reader.readLine()) != null) {
                 String teamName = mLine.substring(10,mLine.indexOf(",Speaker Scores,"));
                 String speakerScoresString = mLine.substring(mLine.indexOf("Speaker Scores,[")+"Speaker Scores,[".length(),mLine.indexOf(",Amp Scores")-1);
-                String ampScoresString = mLine.substring(mLine.indexOf("Amp Scores,[")+"Amp Scores,[".length(),mLine.length()-1);
-
-
-                Log.i("Team Info",teamName);
-                Log.i("Team Info",speakerScoresString);
-                Log.i("Team Info",ampScoresString);
+                String ampScoresString = mLine.substring(mLine.indexOf("Amp Scores,[")+"Amp Scores,[".length(),mLine.indexOf(",Defense,")-1);
+                String defenseScoreString = mLine.substring(mLine.indexOf("Defense,[")+"Defense,[".length(),mLine.indexOf(",Auto Path,")-1);
+                String autoPathString = mLine.substring(mLine.indexOf("Auto Path,[")+"Auto Path,[".length(),mLine.indexOf(",Scoring,")-1);
+                String scoringString = mLine.substring(mLine.indexOf("Scoring,")+"Scoring,".length());
 
                 //turn strings into arrays
                 String[] speakerStringArray = speakerScoresString.split(", ");
@@ -307,14 +305,25 @@ public class MainActivity extends AppCompatActivity {
                 for (int i = 0; i < ampStringArray.length;i++){
                     ampArray[i] = Integer.parseInt(ampStringArray[i]);
                 }
-                robotArray.add(new Robot(teamName,ampArray,speakerArray));
+
+                String[] defenseStringArray = defenseScoreString.split(", ");
+                int[] defenseArray = new int[defenseStringArray.length];
+                for (int i = 0; i < defenseStringArray.length;i++){
+                    defenseArray[i] = Integer.parseInt(defenseStringArray[i]);
+                }
+
+                String[] autoPathStringArray = autoPathString.split(", ");
+                int[] autoPathArray = new int[autoPathStringArray.length];
+                for (int i = 0; i < autoPathStringArray.length;i++){
+                    autoPathArray[i] = Integer.parseInt(autoPathStringArray[i]);
+                }
+
+                double scoring = Double.parseDouble(scoringString);
+
+
+                //String teamName,int[] ampPoints, int[] speakerPoints,int[] defensePoints,int[] autoPathPoints,int[] scoringPoints){
+                robotArray.add(new Robot(teamName,ampArray,speakerArray,defenseArray,autoPathArray,scoring));
             }
-            /*
-            while (text.indexOf("Team Name,") != -1) {
-                ArrayList<Integer> speakerScores = new ArrayList<>();
-                ArrayList<Integer> ampScores = new ArrayList<>();
-            }
-             */
             reader.close();
         } catch(IOException e){
             e.printStackTrace();
@@ -329,15 +338,9 @@ public class MainActivity extends AppCompatActivity {
         sectionObjectArrayList.add(new SectionObject(findViewById(R.id.teamsAmpButton),findViewById(R.id.teamsAmpView),this,QRCode.sortByValue(robotArray,1),1));
         sectionObjectArrayList.add(new SectionObject(findViewById(R.id.teamsSpeakerButton),findViewById(R.id.teamsSpeakerView),this,QRCode.sortByValue(robotArray,2),2));
         sectionObjectArrayList.add(new SectionObject(findViewById(R.id.teamsDefenseButton),findViewById(R.id.teamsDefenseView),this,QRCode.sortByValue(robotArray,3),3));
-        sectionObjectArrayList.add(new SectionObject(findViewById(R.id.teamsConsistencyButton),findViewById(R.id.teamsConsistencyView),this,QRCode.sortByValue(robotArray,4),4));
+        sectionObjectArrayList.add(new SectionObject(findViewById(R.id.teamsAutoButton),findViewById(R.id.teamsAutoView),this,QRCode.sortByValue(robotArray,4),4));
         sectionObjectArrayList.add(new SectionObject(findViewById(R.id.teamsScoringButton),findViewById(R.id.teamsScoringView),this,QRCode.sortByValue(robotArray,5),5));
 
-        //teamMapHash.put(findViewById(R.id.teamsAmpButton),findViewById(R.id.teamsAmpView));
-        //teamMapHash.put(findViewById(R.id.teamsSpeakerButton),findViewById(R.id.teamsSpeakerView));
-        //teamMapHash.put(findViewById(R.id.teamsDefenseButton),findViewById(R.id.teamsDefenseView));
-        //teamMapHash.put(findViewById(R.id.teamsConsistencyButton),findViewById(R.id.teamsConsistencyView));
-        //teamMapHash.put(findViewById(R.id.teamsScoringButton),findViewById(R.id.teamsScoringView));
-        //QRCode.createButtons(teamMapHash,this,robotArray);
         for (SectionObject element : sectionObjectArrayList){
             element.sectionButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -385,7 +388,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 ArrayList<String[]> textMap = new ArrayList<String[]>();
                 textMap.add(new String[]{"Team Name",String.valueOf(TeamName.getText())});
-                textMap.add(new String[]{"Robot Height",String.valueOf(RobotHeight.getText())});
                 textMap.add(new String[]{"Robot Width w/o bumper",String.valueOf(RobotWidth.getText())});
                 textMap.add(new String[]{"Robot Width w/ bumper",String.valueOf(RobotWidthBumper.getText())});
                 textMap.add(new String[]{"Robot Length w/o bumper",String.valueOf(RobotLengthBumper.getText())});
@@ -423,6 +425,8 @@ public class MainActivity extends AppCompatActivity {
                 textMap.add(new String[]{"Teleop: Completed Trap", String.valueOf(CompletedTrap.isChecked())});
                 textMap.add(new String[]{"Teleop: Broke Down but Restarted", String.valueOf(BrokeDownRestarted.isChecked())});
                 textMap.add(new String[]{"Teleop: Broke Down not restarted", String.valueOf(BrokeDownFully.isChecked())});
+                EditText DefenseScoreView = findViewById(R.id.DefenseScore);
+                textMap.add(new String[]{"Teleop: Defense Score", String.valueOf(String.valueOf(DefenseScoreView.getText()))});
                 QRCode.generateQRCode(textMap,QRCodeImage);
             }
         });
@@ -437,13 +441,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 TeamName.setText("");
                 matchNumber.setText("");
-                RobotHeight.setText("");
                 RobotWidth.setText("");
                 RobotWidthBumper.setText("");
                 RobotLength.setText("");
                 RobotLengthBumper.setText("");
                 CycleTime.setText("");
                 DriveType.setText("");
+                EditText defense = findViewById(R.id.DefenseScore);
+                defense.setText("");
                 CanHangOnChain.setChecked(false);
                 CanSpeaker.setChecked(false);
                 CanAmp.setChecked(false);
@@ -464,6 +469,7 @@ public class MainActivity extends AppCompatActivity {
                 CompletedTrap.setChecked(false);
                 BrokeDownFully.setChecked(false);
                 BrokeDownRestarted.setChecked(false);
+
             }
         });
     }

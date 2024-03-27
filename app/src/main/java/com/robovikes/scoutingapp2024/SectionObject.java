@@ -51,29 +51,44 @@ public class SectionObject {
         //table row params
         tableRowParams = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,100);
         //add header row
-        String headerRight = "";
-        if (comparison == 1) headerRight = "Highest Average Amp Score";
-        if (comparison == 2) headerRight = "Highest Average Speaker Score";
-        if (comparison == 3) headerRight = "Highest Average Defense Score";
-        if (comparison == 4) headerRight = "Highest Average Consistency Score";
-        if (comparison == 5) headerRight = "Highest Average Points Score";
         createRow("Team","Score"); //for some god damn reason it cuts off the right side if the left side is too long
         for (int i = 0; i < robotArray.size();i++){
             String value = "";
-            //@parameters 1=ampScore,2=speakerScore,3=defenseScore,4=consistencyScore,5=scoringScore
+            //@parameters 1=ampScore,2=speakerScore,3=defenseScore,4=autoScore,5=scoringScore
             if (comparison == 1) value = String.valueOf(robotArray.get(i).ampScore);
             if (comparison == 2) value = String.valueOf(robotArray.get(i).speakerScore);
             if (comparison == 3) value = String.valueOf(robotArray.get(i).defenseScore);
-            if (comparison == 4) value = String.valueOf(robotArray.get(i).consistencyScore);
+            if (comparison == 4) value = String.valueOf(robotArray.get(i).autoScore);
             if (comparison == 5) value = String.valueOf(robotArray.get(i).scoringScore);
-
-            createRow((i+1) + ". " + robotArray.get(i).teamName,value);
+            if (i % 2 == 0) createRow((i+1) + ". " + robotArray.get(i).teamName,value,"#271136");
+            if (i % 2 == 1) createRow((i+1) + ". " + robotArray.get(i).teamName,value,"#431e5c");
         }
     }
     public void createRow(String leftText, String rightText){
         TableRow tableRow = new TableRow(context);
         tableRow.setGravity(Gravity.CENTER_VERTICAL);
-        tableRow.setPadding(8,8,8,8);
+        tableRow.setPadding(8,8,28,28);
+        TextView leftTextView = createTextView(leftText);
+        leftTextView.setLayoutParams(leftParams);
+        leftTextView.setText(leftText);
+
+
+        TextView rightTextView = createTextView(rightText);
+        rightTextView.setLayoutParams(rightParams);
+        rightTextView.setText(rightText);
+
+
+        tableRow.addView(leftTextView);
+        tableRow.addView(rightTextView);
+
+        tableLayout.addView(tableRow);
+    }
+    //overloaded createRow function with color
+    public void createRow(String leftText, String rightText,String hexCode){
+        TableRow tableRow = new TableRow(context);
+        tableRow.setGravity(Gravity.CENTER_VERTICAL);
+        tableRow.setPadding(8,8,28,28);
+        tableRow.setBackgroundColor(Color.parseColor(hexCode));
         TextView leftTextView = createTextView(leftText);
         leftTextView.setLayoutParams(leftParams);
         leftTextView.setText(leftText);

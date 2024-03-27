@@ -96,10 +96,10 @@
                 android:layout_weight="1">
             </Space>
             <Button
-                android:id="@+id/teamsConsistencyButton"
+                android:id="@+id/teamsAutoButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Consistency"
+                android:text="Auto Path"
                 android:textColor="@color/white">
             </Button>
             <Space
@@ -139,7 +139,7 @@
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/teamsConsistencyView"
+                android:id="@+id/teamsAutoView"
                 android:padding="16dp">
             </ScrollView>
             <ScrollView
